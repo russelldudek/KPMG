@@ -1,5 +1,5 @@
 {
-  "campaign": "KPMG \u2013 Technology Innovation",
+  "campaign": "KPMG – Technology Innovation",
   "repository": "russelldudek/KPMG",
   "canonicalBranch": "main",
   "routes": [
@@ -29,8 +29,8 @@
     "resumePages": 2,
     "coverLetterPages": 1,
     "pageSize": "US Letter",
-    "interviewBriefPages": 4,
-    "entryPlanPages": 3
+    "interviewBriefPages": 2,
+    "entryPlanPages": 2
   },
   "jobPosting": "https://www.kpmguscareers.com/jobdetail/?jobId=134718-B&srcCat=Job+Boards&specSrc=LinkedIn",
   "auditEvidence": "audit-evidence.json"

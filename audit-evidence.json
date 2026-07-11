@@ -54,14 +54,16 @@
       "source": "existing committed PDF re-verified"
     },
     "interviewBrief": {
-      "pages": 4,
-      "source": "existing committed PDF re-verified"
+      "pages": 2,
+      "pageComposition": "passed - two deliberate consulting-report pages",
+      "source": "Chromium print from committed HTML; rendered and visually verified"
     },
     "entryPlan": {
-      "pages": 3,
-      "source": "existing committed PDF re-verified"
+      "pages": 2,
+      "pageComposition": "passed - two deliberate consulting-report pages",
+      "source": "Chromium print from committed HTML; rendered and visually verified"
     }
   },
-  "liveDeployment": "pending post-commit verification",
+  "liveDeployment": "unverified - outbound access to GitHub Pages is blocked in the audit environment",
   "auditDate": "2026-07-11"
 }
