@@ -7,68 +7,84 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 3 0 obj
-<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R 10 0 R] /Count 4 >>
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
 endobj
 4 0 obj
 << /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2059 >>
+<< /Length 2578 >>
 stream
 0.000 0.220 0.650 rg
 0 730 612 62 re f
 1.000 1.000 1.000 rg
-BT /F2 8 Tf 42 764 Td (KPMG TECHNOLOGY INNOVATION) Tj ET
+BT /F2 8 Tf 42 764 Td (GENAI PROVING GROUND) Tj ET
 1.000 1.000 1.000 rg
-BT /F2 20 Tf 42 742 Td (Interview Thesis Brief) Tj ET
+BT /F2 20 Tf 42 742 Td (90-Day Entry Plan) Tj ET
 0.940 0.960 0.990 rg
 38 629 536 79 re f
 0.800 0.850 0.920 RG
 1 w 38 629 536 79 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 684 Td (Actual mandate) Tj ET
+BT /F2 12 Tf 54 684 Td (Purpose) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 662 Td (Convert GenAI experimentation into compounding enterprise capability by improving how) Tj ET
+BT /F1 9 Tf 55 662 Td (Learn the current innovation system before prescribing change, establish shared) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 649 Td (opportunities are framed, bounded, proven, stressed, scaled, reused, partnered, or) Tj ET
+BT /F1 9 Tf 55 649 Td (experiment-to-scale decision rules, and leave KPMG with a visible portfolio of evidence) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 636 Td (stopped.) Tj ET
+BT /F1 9 Tf 55 636 Td (rather than disconnected prototypes.) Tj ET
 0.940 0.960 0.990 rg
-38 549 536 66 re f
+38 485 536 130 re f
 0.800 0.850 0.920 RG
-1 w 38 549 536 66 re S
+1 w 38 485 536 130 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 591 Td (Candidate thesis) Tj ET
+BT /F2 12 Tf 54 591 Td (Days 1-30 | Map the proving environment) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 569 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 569 Td (Innovation compounds when every experiment leaves behind one of three assets: a reusable) Tj ET
+BT /F1 9 Tf 70 569 Td (Listen across Digital Nexus, engineering, architecture, risk, security, business) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 556 Td (capability, reusable evidence, or a fast no.) Tj ET
+BT /F1 9 Tf 70 556 Td (stakeholders, and platform partners.) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 537 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 537 Td (Inventory active proofs of concept, reusable assets, decision gates, unresolved) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 524 Td (constraints, and adoption dependencies.) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 505 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 505 Td (Baseline experiment throughput, decision latency, evidence quality, cost) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 492 Td (visibility, reuse, and stop discipline.) Tj ET
 0.940 0.960 0.990 rg
-38 482 536 53 re f
+38 361 536 110 re f
 0.800 0.850 0.920 RG
-1 w 38 482 536 53 re S
+1 w 38 361 536 110 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 511 Td (Operating model) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 489 Td (FRAME -> BOUND -> BUILD -> STRESS -> COMPOUND) Tj ET
-0.940 0.960 0.990 rg
-38 389 536 79 re f
-0.800 0.850 0.920 RG
-1 w 38 389 536 79 re S
+BT /F2 12 Tf 54 447 Td (First outputs) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 444 Td (Company moment) Tj ET
+BT /F2 10 Tf 55 425 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 422 Td (KPMG is expanding AI investment and ecosystem relationships while moving from) Tj ET
+BT /F1 9 Tf 70 425 Td (Stakeholder and decision map) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 406 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 409 Td (experimentation toward implementation and scale. Innovation leadership therefore has to) Tj ET
+BT /F1 9 Tf 70 406 Td (Current-state experiment portfolio) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 387 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 396 Td (connect technical proof with assurance, economics, adoption, and reuse.) Tj ET
+BT /F1 9 Tf 70 387 Td (Initial risk and authority boundaries) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 368 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 368 Td (Baseline scorecard) Tj ET
 0.750 0.800 0.880 RG
 1 w 38 38 m 574 38 l S
 0.380 0.420 0.480 rg
 BT /F1 8 Tf 38 22 Td (Russell Dudek | KPMG Digital Nexus candidate campaign) Tj ET
 0.380 0.420 0.480 rg
-BT /F2 8 Tf 540 22 Td (1 / 4) Tj ET
+BT /F2 8 Tf 540 22 Td (1 / 3) Tj ET
 
 endstream
 endobj
@@ -76,76 +92,78 @@ endobj
 << /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2303 >>
+<< /Length 2686 >>
 stream
 0.000 0.220 0.650 rg
 0 730 612 62 re f
 1.000 1.000 1.000 rg
-BT /F2 8 Tf 42 764 Td (ROLE INTELLIGENCE) Tj ET
+BT /F2 8 Tf 42 764 Td (DAYS 31-60) Tj ET
 1.000 1.000 1.000 rg
-BT /F2 20 Tf 42 742 Td (Operating Tensions and Decisions) Tj ET
+BT /F2 20 Tf 42 742 Td (From Demand to Bounded Proof) Tj ET
 0.940 0.960 0.990 rg
-38 579 536 129 re f
+38 578 536 130 re f
 0.800 0.850 0.920 RG
-1 w 38 579 536 129 re S
+1 w 38 578 536 130 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 684 Td (Tensions) Tj ET
+BT /F2 12 Tf 54 684 Td (Days 31-45 | Frame and bound) Tj ET
 0.000 0.220 0.650 rg
 BT /F2 10 Tf 55 662 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 662 Td (Experiment velocity versus enterprise assurance) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 643 Td (-) Tj ET
+BT /F1 9 Tf 70 662 Td (Select a small set of representative opportunities with clear work outcomes and) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 643 Td (POC novelty versus reuse and unit economics) Tj ET
+BT /F1 9 Tf 70 649 Td (accountable business owners.) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 624 Td (-) Tj ET
+BT /F2 10 Tf 55 630 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 624 Td (Platform optionality versus common architecture and controls) Tj ET
+BT /F1 9 Tf 70 630 Td (Define human authority, sensitive-data boundaries, evaluation criteria,) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 617 Td (operational dependencies, and an explicit no-go condition before build.) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 605 Td (-) Tj ET
+BT /F2 10 Tf 55 598 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 605 Td (Technical depth versus cross-functional translation) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 586 Td (-) Tj ET
+BT /F1 9 Tf 70 598 Td (Choose build, buy, partner, or reuse pathways with platform and architecture) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 586 Td (Central innovation versus domain professional judgment) Tj ET
+BT /F1 9 Tf 70 585 Td (partners.) Tj ET
 0.940 0.960 0.990 rg
-38 417 536 148 re f
+38 434 536 130 re f
 0.800 0.850 0.920 RG
-1 w 38 417 536 148 re S
+1 w 38 434 536 130 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 541 Td (Decisions the role should improve) Tj ET
+BT /F2 12 Tf 54 540 Td (Days 46-60 | Build minimum enterprise proofs) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 519 Td (-) Tj ET
+BT /F2 10 Tf 55 518 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 519 Td (What work changes and what outcome matters) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 500 Td (-) Tj ET
+BT /F1 9 Tf 70 518 Td (Build the smallest artifact capable of testing the business and technical) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 500 Td (Where human authority remains) Tj ET
+BT /F1 9 Tf 70 505 Td (hypothesis.) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 481 Td (-) Tj ET
+BT /F2 10 Tf 55 486 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 481 Td (Build, buy, partner, or reuse) Tj ET
+BT /F1 9 Tf 70 486 Td (Instrument quality, latency, cost, exception patterns, user behavior, and) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 473 Td (escalation paths.) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 462 Td (-) Tj ET
+BT /F2 10 Tf 55 454 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 462 Td (What evidence warrants scale) Tj ET
+BT /F1 9 Tf 70 454 Td (Run weekly evidence reviews that separate promising signals from prototype) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 441 Td (theater.) Tj ET
+0.940 0.960 0.990 rg
+38 354 536 66 re f
+0.800 0.850 0.920 RG
+1 w 38 354 536 66 re S
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 443 Td (-) Tj ET
+BT /F2 12 Tf 54 396 Td (Decision gate) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 443 Td (What becomes standard) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 424 Td (-) Tj ET
+BT /F1 9 Tf 55 374 Td (Each proof exits with one of six explicit decisions: bound first, stop and harvest,) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 424 Td (What should stop) Tj ET
+BT /F1 9 Tf 55 361 Td (platform candidate, fast prototype, controlled proof, or discovery sprint.) Tj ET
 0.750 0.800 0.880 RG
 1 w 38 38 m 574 38 l S
 0.380 0.420 0.480 rg
 BT /F1 8 Tf 38 22 Td (Russell Dudek | KPMG Digital Nexus candidate campaign) Tj ET
 0.380 0.420 0.480 rg
-BT /F2 8 Tf 540 22 Td (2 / 4) Tj ET
+BT /F2 8 Tf 540 22 Td (2 / 3) Tj ET
 
 endstream
 endobj
@@ -153,182 +171,113 @@ endobj
 << /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3013 >>
+<< /Length 3121 >>
 stream
 0.000 0.220 0.650 rg
 0 730 612 62 re f
 1.000 1.000 1.000 rg
-BT /F2 8 Tf 42 764 Td (WHY RUSSELL) Tj ET
+BT /F2 8 Tf 42 764 Td (DAYS 61-90) Tj ET
 1.000 1.000 1.000 rg
-BT /F2 20 Tf 42 742 Td (Evidence Map and Hard Objection) Tj ET
+BT /F2 20 Tf 42 742 Td (Stress, Compound, and Scale) Tj ET
 0.940 0.960 0.990 rg
-38 514 536 194 re f
+38 591 536 117 re f
 0.800 0.850 0.920 RG
-1 w 38 514 536 194 re S
+1 w 38 591 536 117 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 684 Td (Transferable evidence) Tj ET
+BT /F2 12 Tf 54 684 Td (Days 61-75 | Stress the evidence) Tj ET
 0.000 0.220 0.650 rg
 BT /F2 10 Tf 55 662 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 662 Td (Vape-Jet: current AI-first operating transformation across robotics, telemetry,) Tj ET
+BT /F1 9 Tf 70 662 Td (Test reliability, security, governance, economics, workflow fit, human override,) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 649 Td (enterprise systems, and cross-functional workflows.) Tj ET
+BT /F1 9 Tf 70 649 Td (and failure recovery under realistic conditions.) Tj ET
 0.000 0.220 0.650 rg
 BT /F2 10 Tf 55 630 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 630 Td (DudeWorth: AI-readiness, opportunity framing, agentic workflow patterns, human) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 617 Td (judgment, evaluation, and governance.) Tj ET
+BT /F1 9 Tf 70 630 Td (Compare expected value with total operating burden, not only model performance.) Tj ET
 0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 598 Td (-) Tj ET
+BT /F2 10 Tf 55 611 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 598 Td (Amazon: scaled 24/7 operating mechanisms, visibility, escalation, and standard) Tj ET
+BT /F1 9 Tf 70 611 Td (Document what must be true for adoption and ownership after the innovation team) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 585 Td (work.) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 566 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 566 Td (Compunetics: high-reliability engineering, manufacturing, quality systems,) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 553 Td (technical programs, and consequence-sensitive customers.) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 534 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 534 Td (ZeusVu: regulated autonomous operations and computer-vision concepts with a 100%) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 521 Td (safety record.) Tj ET
+BT /F1 9 Tf 70 598 Td (steps back.) Tj ET
 0.940 0.960 0.990 rg
-38 421 536 79 re f
+38 447 536 130 re f
 0.800 0.850 0.920 RG
-1 w 38 421 536 79 re S
+1 w 38 447 536 130 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 476 Td (Strongest reasonable objection) Tj ET
+BT /F2 12 Tf 54 553 Td (Days 76-90 | Compound the learning) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 531 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 454 Td (The posting asks for deep recent AI/ML experience and hands-on enterprise AI platform) Tj ET
+BT /F1 9 Tf 70 531 Td (Promote reusable components, evaluation patterns, decision records, and control) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 441 Td (development. The verified record does not support claiming a five-year foundation-model) Tj ET
+BT /F1 9 Tf 70 518 Td (mechanisms into a shared capability library.) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 499 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 428 Td (research career or unverified Azure AI Foundry or Vertex AI production ownership.) Tj ET
+BT /F1 9 Tf 70 499 Td (Stop weak experiments cleanly while preserving evidence that improves future) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 486 Td (choices.) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 467 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 467 Td (Present an executive portfolio view: scale, reuse, partner, hold, or stop; owner;) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 454 Td (economics; risk; next decision date.) Tj ET
 0.940 0.960 0.990 rg
-38 328 536 79 re f
+38 304 536 129 re f
 0.800 0.850 0.920 RG
-1 w 38 328 536 79 re S
+1 w 38 304 536 129 re S
 0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 383 Td (Response) Tj ET
+BT /F2 12 Tf 54 409 Td (90-day success measures) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 387 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 361 Td (Own the gap. Make the adjacent-evidence case around enterprise proofs, engineering) Tj ET
+BT /F1 9 Tf 70 387 Td (Faster and clearer experiment decisions) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 368 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 348 Td (coordination, roadmaps, partner collaboration, adoption, governance, operating) Tj ET
+BT /F1 9 Tf 70 368 Td (Visible cost and value hypotheses) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 349 Td (-) Tj ET
 0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 335 Td (mechanisms, and the discipline required to move emerging technology into real work.) Tj ET
+BT /F1 9 Tf 70 349 Td (Reusable evidence and components) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 330 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 330 Td (Named operating owners and adoption commitments) Tj ET
+0.000 0.220 0.650 rg
+BT /F2 10 Tf 55 311 Td (-) Tj ET
+0.070 0.120 0.200 rg
+BT /F1 9 Tf 70 311 Td (A credible next-quarter roadmap) Tj ET
 0.750 0.800 0.880 RG
 1 w 38 38 m 574 38 l S
 0.380 0.420 0.480 rg
 BT /F1 8 Tf 38 22 Td (Russell Dudek | KPMG Digital Nexus candidate campaign) Tj ET
 0.380 0.420 0.480 rg
-BT /F2 8 Tf 540 22 Td (3 / 4) Tj ET
+BT /F2 8 Tf 540 22 Td (3 / 3) Tj ET
 
 endstream
 endobj
 10 0 obj
-<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 2725 >>
-stream
-0.000 0.220 0.650 rg
-0 730 612 62 re f
-1.000 1.000 1.000 rg
-BT /F2 8 Tf 42 764 Td (DISCOVERY AGENDA) Tj ET
-1.000 1.000 1.000 rg
-BT /F2 20 Tf 42 742 Td (Executive Questions and First 90 Days) Tj ET
-0.940 0.960 0.990 rg
-38 527 536 181 re f
-0.800 0.850 0.920 RG
-1 w 38 527 536 181 re S
-0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 684 Td (Questions for KPMG) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 662 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 662 Td (Where do promising AI experiments currently stall between proof and scaled) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 649 Td (adoption?) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 630 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 630 Td (Which decisions are hardest today: priority, architecture, risk, economics,) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 617 Td (ownership, or stop?) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 598 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 598 Td (How are reusable components and evaluation evidence carried from one experiment) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 585 Td (into the next?) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 566 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 566 Td (Where should Digital Nexus standardize, and where must business-domain judgment) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 553 Td (remain local?) Tj ET
-0.000 0.220 0.650 rg
-BT /F2 10 Tf 55 534 Td (-) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 70 534 Td (What would make this hire unquestionably successful twelve months from now?) Tj ET
-0.940 0.960 0.990 rg
-38 421 536 92 re f
-0.800 0.850 0.920 RG
-1 w 38 421 536 92 re S
-0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 489 Td (First 90 days) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 467 Td (Map the current proving environment, establish bounded decision rules, run) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 454 Td (representative proofs with explicit evidence gates, stress quality and economics, and) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 441 Td (build an executive portfolio view that distinguishes scale, reuse, partner, hold, and) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 428 Td (stop.) Tj ET
-0.940 0.960 0.990 rg
-38 341 536 66 re f
-0.800 0.850 0.920 RG
-1 w 38 341 536 66 re S
-0.000 0.220 0.650 rg
-BT /F2 12 Tf 54 383 Td (Hypothesis label) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 361 Td (The GenAI Proving Ground is a candidate-created operating hypothesis for discovery, not) Tj ET
-0.070 0.120 0.200 rg
-BT /F1 9 Tf 55 348 Td (a representation of current KPMG policy.) Tj ET
-0.750 0.800 0.880 RG
-1 w 38 38 m 574 38 l S
-0.380 0.420 0.480 rg
-BT /F1 8 Tf 38 22 Td (Russell Dudek | KPMG Digital Nexus candidate campaign) Tj ET
-0.380 0.420 0.480 rg
-BT /F2 8 Tf 540 22 Td (4 / 4) Tj ET
-
-endstream
-endobj
-12 0 obj
 << /Type /Catalog /Pages 3 0 R >>
 endobj
 xref
-0 13
+0 11
 0000000000 65535 f 
 0000000031 00000 n 
 0000000101 00000 n 
 0000000176 00000 n 
-0000000252 00000 n 
-0000000388 00000 n 
-0000002499 00000 n 
-0000002635 00000 n 
-0000004990 00000 n 
-0000005126 00000 n 
-0000008191 00000 n 
-0000008329 00000 n 
-0000011107 00000 n 
+0000000245 00000 n 
+0000000381 00000 n 
+0000003011 00000 n 
+0000003147 00000 n 
+0000005885 00000 n 
+0000006021 00000 n 
+0000009194 00000 n 
 trailer
-<< /Size 13 /Root 12 0 R >>
+<< /Size 11 /Root 10 0 R >>
 startxref
-11157
+9244
 %%EOF
