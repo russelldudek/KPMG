@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive experiment decision card for the KPMG GenAI Proving Ground candidate thesis.">
+  <title>Experiment Decision Lab | Russell Dudek</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Campaign navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">RD</span><span>Russell Dudek · Candidate Vision</span></a>
+    <div class="nav-links"><a href="index.html">Vision</a><a href="90-day-plan.html">90-day plan</a><a href="interview-brief.html">Interview brief</a><a href="resume.html">Resume</a></div>
+  </nav>
+  <main id="main" class="lab-page">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Interactive operating artifact</span>
+        <h1 style="max-width:13ch;font-size:clamp(3rem,7vw,6rem)">Experiment decision card.</h1>
+        <p>Move the controls to surface a recommended proof path. The point is not mathematical precision; it is forcing a cross-functional conversation about value, evidence, reuse, adoption burden, and assurance before engineering momentum becomes strategy.</p>
+      </div>
+      <div class="decision-shell">
+        <section class="slider-card" aria-label="Experiment factors">
+          <div class="control"><div class="control-top"><label for="business">Business value</label><output data-output-for="business" for="business">4</output></div><p>How consequential is the target workflow or decision if the hypothesis proves true?</p><input id="business" data-decision-input="business" type="range" min="1" max="5" value="4"></div>
+          <div class="control"><div class="control-top"><label for="data">Evidence and data readiness</label><output data-output-for="data" for="data">3</output></div><p>Can the team access representative data, test cases, baselines, and domain review?</p><input id="data" data-decision-input="data" type="range" min="1" max="5" value="3"></div>
+          <div class="control"><div class="control-top"><label for="reuse">Reuse potential</label><output data-output-for="reuse" for="reuse">4</output></div><p>Could the core pattern, service, test pack, or control mechanism solve more than one problem?</p><input id="reuse" data-decision-input="reuse" type="range" min="1" max="5" value="4"></div>
+          <div class="control"><div class="control-top"><label for="adoption">Adoption burden</label><output data-output-for="adoption" for="adoption">3</output></div><p>How much behavior, role, incentive, training, or process change is required?</p><input id="adoption" data-decision-input="adoption" type="range" min="1" max="5" value="3"></div>
+          <div class="control"><div class="control-top"><label for="risk">Assurance consequence</label><output data-output-for="risk" for="risk">3</output></div><p>How severe are the consequences of error, leakage, bias, noncompliance, or uncontrolled action?</p><input id="risk" data-decision-input="risk" type="range" min="1" max="5" value="3"></div>
+        </section>
+        <aside class="route-card" aria-live="polite">
+          <div class="route-head"><small>Recommended proof path</small><h2 data-route-title>PLATFORM CANDIDATE</h2></div>
+          <div class="route-body"><p data-route-reason></p><h3>Evidence required next</h3><div class="evidence-checks" data-route-evidence></div><div class="disclaimer"><strong>Hypothesis for discovery:</strong> This is a candidate-created conversation aid, not KPMG policy, methodology, or a validated scoring model.</div></div>
+        </aside>
+      </div>
+      <section aria-labelledby="decision-architecture-title">
+        <div class="section-head"><span class="eyebrow">Decision architecture</span><h2 id="decision-architecture-title">The card should make six decisions easier.</h2></div>
+        <div class="scorecard-grid">
+          <article class="score-item"><small>01</small><h3>What changes?</h3><p>Identify the workflow, decision, or handoff—not a generic AI use case.</p></article>
+          <article class="score-item"><small>02</small><h3>Who retains authority?</h3><p>Make accountable human review, override, intervention, and escalation explicit.</p></article>
+          <article class="score-item"><small>03</small><h3>Build, buy, partner, or reuse?</h3><p>Compare architecture paths before custom work becomes a sunk-cost argument.</p></article>
+          <article class="score-item"><small>04</small><h3>What proves enough?</h3><p>Predefine the evidence that warrants scale—or disproves the hypothesis.</p></article>
+          <article class="score-item"><small>05</small><h3>What gets standardized?</h3><p>Separate reusable services, controls, test packs, and patterns from domain-specific judgment.</p></article>
+          <article class="score-item"><small>06</small><h3>What gets stopped?</h3><p>Protect scarce engineering capacity by making clean termination a successful decision.</p></article>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-grid"><span>Operating artifact · GenAI Proving Ground</span><a href="index.html">← Back to candidate vision</a></div></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
