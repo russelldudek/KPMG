@@ -1,0 +1,37 @@
+{
+  "campaign": "KPMG \u2013 Technology Innovation",
+  "repository": "russelldudek/KPMG",
+  "canonicalBranch": "main",
+  "routes": [
+    "index.html",
+    "decision-lab.html",
+    "resume.html",
+    "cover-letter.html",
+    "interview-brief.html",
+    "90-day-plan.html"
+  ],
+  "source": [
+    "styles.css",
+    "app.js",
+    "README.md",
+    "brand-intelligence.md",
+    "campaign-metadata.json",
+    "artifact-manifest.json",
+    "assets/proving-ground-mark.svg"
+  ],
+  "pdfs": [
+    "docs/Russell-Dudek-KPMG-Resume.pdf",
+    "docs/Russell-Dudek-KPMG-Cover-Letter.pdf",
+    "docs/Russell-Dudek-KPMG-Interview-Brief.pdf",
+    "docs/Russell-Dudek-KPMG-90-Day-Plan.pdf"
+  ],
+  "printContracts": {
+    "resumePages": 2,
+    "coverLetterPages": 1,
+    "pageSize": "US Letter",
+    "interviewBriefPages": 4,
+    "entryPlanPages": 3
+  },
+  "jobPosting": "https://www.kpmguscareers.com/jobdetail/?jobId=134718-B&srcCat=Job+Boards&specSrc=LinkedIn",
+  "auditEvidence": "audit-evidence.json"
+}

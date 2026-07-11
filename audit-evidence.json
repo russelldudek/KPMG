@@ -1,0 +1,67 @@
+{
+  "campaignStateBeforeRepair": "building",
+  "auditedViewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false
+    }
+  ],
+  "visualReview": {
+    "fullPageScreenshotsReviewed": true,
+    "signatureHero": "GenAI Proving Ground calibration rig",
+    "lowerSectionsArtDirected": true
+  },
+  "motion": {
+    "heroProofCycle": true,
+    "outcomeTabs": true,
+    "decisionLabStateResponse": true,
+    "reducedMotionCompleteState": true,
+    "animationsRemainingInReducedMotion": 0
+  },
+  "functional": {
+    "relativeLinkIssues": 0,
+    "duplicateIdIssues": 0,
+    "unlabeledInputs": 0,
+    "missingImageAlt": 0,
+    "mobileNavigationToggle": true,
+    "keyboardOutcomeTabs": true,
+    "keyboardSliders": true
+  },
+  "pdfs": {
+    "resume": {
+      "pages": 2,
+      "pageOneBalance": "passed",
+      "source": "existing committed PDF re-verified"
+    },
+    "coverLetter": {
+      "pages": 1,
+      "source": "existing committed PDF re-verified"
+    },
+    "interviewBrief": {
+      "pages": 4,
+      "source": "existing committed PDF re-verified"
+    },
+    "entryPlan": {
+      "pages": 3,
+      "source": "existing committed PDF re-verified"
+    }
+  },
+  "liveDeployment": "pending post-commit verification",
+  "auditDate": "2026-07-11"
+}
