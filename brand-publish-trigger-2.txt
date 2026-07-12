@@ -1,0 +1,1 @@
+Second deterministic trigger for the KPMG Brand Fidelity publication workflow.
