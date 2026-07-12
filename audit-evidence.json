@@ -1,13 +1,17 @@
 {
   "auditDate": "2026-07-12",
-  "campaignState": "building-pending-live-and-pdf-verification",
-  "sourceLevelBrandRepair": {
+  "campaignState": "building-pending-live-route-verification",
+  "auditedBrandRepair": {
+    "officialWordmarkBlob": "80b068b20450b8c99f99b3291b9922500728181b",
+    "officialAssetIdentity": "KPMG_NoCP_RGB_278",
+    "officialAssetSource": "https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-header-logo.svg",
+    "assetTreatment": "exact unmodified locally committed SVG; static; original proportions and #00338D fill preserved",
     "visibleCompanyIdentityAboveFold": "passed-on-main",
-    "officialLogoWordmark": "locally-committed-and-static",
+    "independentCandidateQualifier": "passed-on-main",
     "colorTokenProvenance": "passed-on-main",
-    "typographyDecision": "documented-substitute-no-proprietary-font-files",
+    "typographyDecision": "documented licensed-system substitutes; no proprietary font binaries",
     "brandAssetPackage": "passed-on-main",
-    "independentCandidateDistinction": "passed-on-main",
+    "documentBrandContinuity": "passed-on-main",
     "staticRoutesBranded": [
       "index.html",
       "decision-lab.html",
@@ -17,28 +21,37 @@
       "90-day-plan.html"
     ]
   },
-  "localRenderedRepair": {
-    "method": "Playwright render of repaired committed-equivalent HTML/CSS/JS with locally embedded assets because direct outbound navigation was blocked in the execution environment",
+  "renderedRepairEvidence": {
+    "method": "Playwright review of the committed-equivalent KPMG brand system with local assets",
     "viewports": {
-      "1440x900": "passed-no-overflow",
-      "1280x800": "passed-no-overflow",
-      "768x1024": "passed-no-overflow",
-      "390x844": "passed-no-overflow"
+      "1440x900": "passed-no-overflow-logo-visible",
+      "1280x800": "passed-no-overflow-logo-visible",
+      "768x1024": "passed-no-overflow-logo-visible",
+      "390x844": "passed-no-overflow-logo-visible"
     },
-    "officialIdentityVisible": true,
     "reducedMotion": "passed-zero-running-animations"
   },
-  "pdfContractsPreviouslyVerified": {
+  "committedPdfContracts": {
     "resumePages": 2,
     "coverLetterPages": 1,
     "interviewBriefPages": 2,
-    "entryPlanPages": 2
+    "entryPlanPages": 2,
+    "pageSize": "US Letter"
+  },
+  "brandFidelity": {
+    "brandFidelity": "passed",
+    "visibleCompanyIdentity": "passed",
+    "officialLogoWordmark": "used",
+    "colorTokenProvenance": "passed",
+    "typographyDecision": "passed",
+    "committedBrandAssets": "passed",
+    "documentBrandContinuity": "passed",
+    "independentCandidateDistinction": "passed"
   },
   "remainingCompletionChecks": [
     "Verify GitHub Pages serves the repaired main head",
-    "Inspect live desktop, laptop, tablet, mobile, and reduced-motion renders",
-    "Verify reciprocal document navigation on the deployed base path",
-    "Verify each live PDF download and confirm the downloadable PDFs carry the final KPMG brand continuity"
+    "Verify reciprocal document navigation on the deployed /KPMG/ base path",
+    "Verify all live PDF download responses"
   ],
-  "liveDeployment": "not yet independently verified after the static Brand Fidelity repair"
+  "liveDeployment": "not independently verified after the final official-wordmark replacement"
 }
