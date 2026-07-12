@@ -1,55 +1,26 @@
-# KPMG Brand and Experience Intelligence Record
+# KPMG Brand Intelligence
 
-## Official source record
+## Identity and provenance
+- Official wordmark: `assets/brand/kpmg-logo.svg`
+- Official source: https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-header-logo.svg
+- Source context: KPMG US Careers header logo, used only for nominative identification of the target employer.
+- Visible-use decision: official logo above the fold and in campaign navigation; restrained logo treatment in printable artifacts. Every surface is labeled as independent candidate work by Russell Dudek.
 
-**Official corporate source:** KPMG Global — https://kpmg.com/xx/en.html  
-**Official careers source:** KPMG Global Careers — https://kpmg.com/xx/en/careers.html  
-**Asset provenance:** Both sources are official KPMG digital properties. No third-party logo aggregator, scraped brand kit, copied photography, or hotlinked campaign asset is used.
+## Color system
+- `#00338D` — source-sampled official KPMG primary blue from the public KPMG identity.
+- `#005EB8` — source-sampled supporting KPMG blue used in public digital identity.
+- `#0091DA` — source-sampled light KPMG blue used for highlights and data states.
+- `#E5F2F8`, `#F4F7FA`, `#FFFFFF` — candidate-neutral tints supporting accessibility and document readability.
+- No violet, pink, or generic RoleForge gradient is treated as KPMG brand color.
 
-## Employer-aware visual grammar
+## Typography decision
+KPMG's public identity uses a disciplined neo-grotesque sans-serif character. Proprietary corporate font files are not copied or committed. The campaign uses `Arial Nova`, `Helvetica Neue`, Arial, and system sans-serif as licensed/system substitutes, reproducing the public character through restrained weight, generous scale, compact tracking, and editorial hierarchy. The substitute is not represented as an official KPMG font.
 
-**Palette:** Blue-led corporate identity with purple and light-blue accents, white/light-neutral surfaces, and dark navy text. The campaign uses an original employer-adjacent palette; its CSS values are not represented as official KPMG brand tokens.
+## Visual grammar
+- Strong KPMG blue fields balanced with white space.
+- Rectilinear frames and square-cornered surfaces echo the geometry of the official four-box wordmark.
+- Clear editorial hierarchy, thin rules, compact labels, and blue-spectrum data graphics.
+- Motion remains candidate-original and role-derived: the GenAI Proving Ground moves an experiment through proof stations and valid outcomes. The official logo is never animated, recolored, distorted, or combined into a candidate-created mark.
 
-**Typography character:** Large, direct sans-serif display headlines; clean sans-serif body and interface copy; short editorial labels; decisive contrast between headline scale and operational detail.
-
-**Photography and illustration character:** Official KPMG properties pair professional people, collaboration, technology, purpose, and learning. The candidate campaign does not reproduce that photography. Instead, it translates the role into an original technical illustration system.
-
-**Geometry and interface motifs:** Modular editorial panels, disciplined grids, rectangular structures, fine-line diagrams, spacious light surfaces, and selective saturated accents.
-
-**Motion character:** KPMG's public digital presence is treated as precise and editorial rather than playful. The campaign therefore uses deliberate sequencing, short proof-state transitions, transform/opacity motion, and quiet instrumentation. This is an original candidate-campaign motion system, not a copied KPMG animation.
-
-**Overall vibe:** Credible, modern, technical, human-centered, premium, and restrained.
-
-## Role-derived experience record
-
-**Signature hero composition:** A GenAI Proving Ground calibration rig. A proof specimen travels through FRAME, BOUND, BUILD, STRESS, and COMPOUND while the rig reports state and deposits one of three legitimate experiment assets.
-
-**Role-derived motion system:** The specimen advances through five proof gates, the calibration trace scans, station states accumulate, and the output bins resolve. The motion makes the experiment-to-scale sequence visible rather than decorating the hero.
-
-**Meaningful interaction:** The hero can run a proof cycle; the output console switches among reusable capability, reusable evidence, and fast no; the separate decision lab routes an opportunity among stop, bound, discovery, prototype, controlled proof, and platform candidate as five factors change.
-
-**Full-page visual pacing:** Calibration rig → company signals → mandate → tension board → experiment contract → operating sequence → outcome console → scorecard instrumentation → evidence traces → entry runs → objection red team → executive questions → campaign handoff.
-
-**Responsive adaptation:** The calibration rig reorients from horizontal to vertical at tablet/mobile widths; wide comparison and trace layouts become role-preserving sequences rather than generic stacked cards; mobile navigation becomes an explicit keyboard-accessible menu.
-
-**Reduced-motion treatment:** Automatic cycling and line animations stop; the completed proof state is shown immediately; all gates, outputs, controls, tabs, and slider responses remain available.
-
-**Quality benchmark cases:** 3Cloud for role-specific interaction and document craft; KPMG's earlier Proving Ground case for thesis continuity. The execution intentionally avoids Delivery Weave ribbons, orbit systems, dispatch consoles, proof ledgers, and operating-envelope contours.
-
-**Clone risks to avoid:** Do not reuse this calibration rig, specimen path, proof-cycle waveform, three output bins, decision spectrum, or exact FRAME → BOUND → BUILD → STRESS → COMPOUND sequence outside a genuine experiment-to-scale role.
-
-## Usage decisions and constraints
-
-**Official logo decision:** The KPMG logo is not embedded. This avoids implying endorsement or making an independent candidate site resemble an official firm publication.
-
-**Original assets created:** `assets/proving-ground-mark.svg`, calibration rig, proof waveform, station rail, asset bins, tension board, experiment contract sheet, system log, outcome console, and route spectrum.
-
-**Recommended use by artifact:**
-
-- **Candidate vision:** full blue/violet/pink calibration system, role-derived motion, and interactive proof mechanics.
-- **Résumé and cover letter:** restrained blue accents, white paper, dark navy typography, no corporate logo.
-- **Interview brief and 90-day plan:** consulting-report hierarchy, modular sections, restrained accents, and no copied firm templates.
-
-## Non-endorsement statement
-
-This is an independent candidate campaign. It is not produced, sponsored, reviewed, or endorsed by KPMG. KPMG names and linked official pages are used only to identify the employer and document public-source research.
+## Independent-work distinction
+This repository is an independent candidate campaign by Russell Dudek. It is not a KPMG publication and does not imply sponsorship, approval, employment, or endorsement.
