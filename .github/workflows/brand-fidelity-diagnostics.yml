@@ -1,0 +1,81 @@
+name: KPMG Brand Fidelity Diagnostics
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'brand-audit-trigger.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install audit dependencies
+        run: |
+          npm install --prefix /tmp/kpmg-audit playwright
+          /tmp/kpmg-audit/node_modules/.bin/playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Capture rendered evidence and PDFs
+        run: |
+          mkdir -p audit/screenshots docs
+          cat > /tmp/diagnose.js <<'JS'
+          const { chromium } = require('/tmp/kpmg-audit/node_modules/playwright');
+          const fs=require('fs'),path=require('path');
+          const root=process.cwd(),url=n=>'file://'+path.join(root,n);
+          const report={viewports:[],reducedMotion:null,documents:[],errors:[]};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            for(const [width,height] of [[1440,900],[1280,800],[768,1024],[390,844]]){
+              const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+              try{await page.goto(url('index.html'),{waitUntil:'load'});await page.waitForTimeout(400);const data=await page.evaluate(()=>{const logo=document.querySelector('.hero-company-lockup img'),r=logo?.getBoundingClientRect();return{overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,logoLoaded:!!logo&&logo.complete&&logo.naturalWidth>0,logoTop:r?.top,logoBottom:r?.bottom,viewportHeight:innerHeight,logoAboveFold:!!r&&r.top>=0&&r.bottom<=innerHeight,qualifier:/Independent work by Russell Dudek/i.test(document.body.innerText),primary:getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim().toLowerCase(),navHeight:document.querySelector('.site-nav')?.getBoundingClientRect().height||0,heroHeight:document.querySelector('.hero')?.getBoundingClientRect().height||0}});report.viewports.push({width,height,...data,pageErrors:errors,pass:!data.overflow&&data.logoLoaded&&data.logoAboveFold&&data.qualifier&&data.primary==='#00338d'&&!errors.length});await page.screenshot({path:`audit/screenshots/index-${width}x${height}.png`,fullPage:true});}catch(e){report.viewports.push({width,height,pass:false,error:String(e),pageErrors:errors});}await page.close();
+            }
+            try{const c=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'}),p=await c.newPage();await p.goto(url('index.html'),{waitUntil:'load'});await p.waitForTimeout(300);const running=await p.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length);report.reducedMotion={running,pass:running===0};await p.screenshot({path:'audit/screenshots/index-reduced-motion.png',fullPage:true});await c.close();}catch(e){report.reducedMotion={pass:false,error:String(e)}}
+            for(const [html,pdf] of [['resume.html','docs/Russell-Dudek-KPMG-Resume.pdf'],['cover-letter.html','docs/Russell-Dudek-KPMG-Cover-Letter.pdf'],['interview-brief.html','docs/Russell-Dudek-KPMG-Interview-Brief.pdf'],['90-day-plan.html','docs/Russell-Dudek-KPMG-90-Day-Plan.pdf']]){const p=await browser.newPage();try{await p.goto(url(html),{waitUntil:'load'});const web=await p.evaluate(()=>({logo:!!document.querySelector('img[src="assets/brand/kpmg-logo.svg"]'),download:document.body.innerText.includes('Download PDF'),company:document.body.innerText.includes('KPMG')}));await p.emulateMedia({media:'print'});await p.pdf({path:pdf,format:'Letter',printBackground:true,margin:{top:'0',right:'0',bottom:'0',left:'0'}});report.documents.push({html,pdf,web,generated:true});}catch(e){report.documents.push({html,pdf,generated:false,error:String(e)});}await p.close();}
+            await browser.close();
+          })().catch(e=>report.errors.push(String(e))).finally(()=>fs.writeFileSync('audit/render-report.json',JSON.stringify(report,null,2)));
+          JS
+          node /tmp/diagnose.js
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          p=Path('audit/render-report.json'); r=json.loads(p.read_text())
+          expected={'docs/Russell-Dudek-KPMG-Resume.pdf':2,'docs/Russell-Dudek-KPMG-Cover-Letter.pdf':1,'docs/Russell-Dudek-KPMG-Interview-Brief.pdf':2,'docs/Russell-Dudek-KPMG-90-Day-Plan.pdf':2}
+          for d in r['documents']:
+              pdf=d['pdf']
+              if Path(pdf).exists():
+                  out=subprocess.check_output(['pdfinfo',pdf],text=True)
+                  pages=int(next(line.split(':',1)[1] for line in out.splitlines() if line.startswith('Pages:')).strip())
+                  d['pages']=pages;d['expectedPages']=expected[pdf];d['pageCountPass']=pages==expected[pdf]
+              else:d['pageCountPass']=False
+          r['overallPass']=all(v.get('pass') for v in r['viewports']) and r.get('reducedMotion',{}).get('pass',False) and all(d.get('generated') and d.get('web',{}).get('logo') and d.get('web',{}).get('download') and d.get('web',{}).get('company') and d.get('pageCountPass') for d in r['documents']) and not r['errors']
+          p.write_text(json.dumps(r,indent=2))
+          print(json.dumps(r,indent=2))
+          PY
+
+      - name: Commit diagnostic evidence to PR branch
+        run: |
+          rm -f brand-audit-trigger.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add audit docs
+          git rm --ignore-unmatch brand-audit-trigger.txt
+          git commit -m 'Capture KPMG Brand Fidelity render diagnostics'
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Enforce diagnostic result
+        run: python -c "import json,sys; sys.exit(0 if json.load(open('audit/render-report.json'))['overallPass'] else 1)"
