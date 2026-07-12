@@ -12,11 +12,21 @@
   ],
   "source": [
     "styles.css",
+    "brand-tokens.css",
+    "brand-fidelity.css",
+    "document-brand.css",
     "app.js",
-    "README.md",
+    "brand-runtime.js",
     "brand-intelligence.md",
     "campaign-metadata.json",
-    "artifact-manifest.json",
+    "README.md",
+    "audit-evidence.json"
+  ],
+  "brandAssets": [
+    "assets/brand/kpmg-logo.svg",
+    "assets/brand/README.md"
+  ],
+  "candidateAssets": [
     "assets/proving-ground-mark.svg"
   ],
   "pdfs": [
@@ -28,10 +38,10 @@
   "printContracts": {
     "resumePages": 2,
     "coverLetterPages": 1,
-    "pageSize": "US Letter",
     "interviewBriefPages": 2,
-    "entryPlanPages": 2
+    "entryPlanPages": 2,
+    "pageSize": "US Letter"
   },
   "jobPosting": "https://www.kpmguscareers.com/jobdetail/?jobId=134718-B&srcCat=Job+Boards&specSrc=LinkedIn",
-  "auditEvidence": "audit-evidence.json"
+  "state": "building-pending-live-and-pdf-verification"
 }
