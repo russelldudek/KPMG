@@ -1,0 +1,35 @@
+name: Publish corrected KPMG documents
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-document-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate corrected PDFs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y weasyprint poppler-utils
+          mkdir -p docs
+          weasyprint resume.html docs/Russell-Dudek-KPMG-Resume.pdf
+          weasyprint cover-letter.html docs/Russell-Dudek-KPMG-Cover-Letter.pdf
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Resume.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')" = "1"
+          pdftotext docs/Russell-Dudek-KPMG-Cover-Letter.pdf - | grep -q 'russelldudek.github.io/KPMG/'
+          pdftotext docs/Russell-Dudek-KPMG-Resume.pdf - | grep -q 'russelldudek.github.io/KPMG/'
+      - name: Commit corrected downloads
+        run: |
+          rm -f .github/workflows/publish-document-fix.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs .github/workflows/publish-document-fix.yml
+          git commit -m 'Publish corrected KPMG resume and cover letter PDFs'
+          git push
