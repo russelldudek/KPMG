@@ -1,5 +1,13 @@
 (() => {
   'use strict';
+  const brandScript = document.createElement('script');
+  brandScript.src = 'brand-runtime.js';
+  brandScript.defer = true;
+  document.head.appendChild(brandScript);
+})();
+
+(() => {
+  'use strict';
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const navToggle = document.querySelector('.nav-toggle');
