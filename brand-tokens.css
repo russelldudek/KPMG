@@ -1,0 +1,43 @@
+:root {
+  /* KPMG recognition layer: official/source-sampled public identity colors */
+  --brand-primary: #00338D;
+  --brand-secondary: #005EB8;
+  --brand-accent: #0091DA;
+  --brand-violet: #483698;
+  --brand-purple: #470A68;
+  --brand-teal: #00A3A1;
+  --brand-dark: #001E5A;
+  --brand-ink: #1A1A1A;
+  --brand-light: #FFFFFF;
+  --brand-mist: #E5F3FA;
+  --brand-cloud: #F3F6FA;
+  --brand-line: #B8C7DB;
+
+  /* Candidate-original proving-ground accents, deliberately subordinate */
+  --campaign-signal: #F2A900;
+  --campaign-pass: #00A3A1;
+  --campaign-hold: #483698;
+
+  /* Aliases consumed by the existing RoleForge component system */
+  --ink: var(--brand-primary);
+  --ink-2: var(--brand-dark);
+  --blue: var(--brand-primary);
+  --blue-2: var(--brand-secondary);
+  --violet: var(--brand-violet);
+  --pink: var(--brand-accent);
+  --sky: var(--brand-mist);
+  --lav: #EEF0F8;
+  --ice: var(--brand-cloud);
+  --paper: var(--brand-light);
+  --line: var(--brand-line);
+  --muted: #4F5F73;
+  --green: var(--brand-teal);
+  --amber: var(--campaign-signal);
+  --red: #B42318;
+  --shadow: 0 22px 60px rgba(0, 51, 141, .14);
+  --radius-xl: 8px;
+  --radius-lg: 6px;
+  --radius-md: 4px;
+  --font-display: "Noto Sans Display", "Arial Narrow", "Segoe UI", sans-serif;
+  --font-body: "Noto Sans", "Segoe UI", Arial, sans-serif;
+}
