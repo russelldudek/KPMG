@@ -1,69 +1,44 @@
 {
-  "campaignStateBeforeRepair": "building",
-  "auditedViewports": [
-    {
-      "width": 1440,
-      "height": 900,
-      "horizontalOverflow": false
+  "auditDate": "2026-07-12",
+  "campaignState": "building-pending-live-and-pdf-verification",
+  "sourceLevelBrandRepair": {
+    "visibleCompanyIdentityAboveFold": "passed-on-main",
+    "officialLogoWordmark": "locally-committed-and-static",
+    "colorTokenProvenance": "passed-on-main",
+    "typographyDecision": "documented-substitute-no-proprietary-font-files",
+    "brandAssetPackage": "passed-on-main",
+    "independentCandidateDistinction": "passed-on-main",
+    "staticRoutesBranded": [
+      "index.html",
+      "decision-lab.html",
+      "resume.html",
+      "cover-letter.html",
+      "interview-brief.html",
+      "90-day-plan.html"
+    ]
+  },
+  "localRenderedRepair": {
+    "method": "Playwright render of repaired committed-equivalent HTML/CSS/JS with locally embedded assets because direct outbound navigation was blocked in the execution environment",
+    "viewports": {
+      "1440x900": "passed-no-overflow",
+      "1280x800": "passed-no-overflow",
+      "768x1024": "passed-no-overflow",
+      "390x844": "passed-no-overflow"
     },
-    {
-      "width": 1280,
-      "height": 800,
-      "horizontalOverflow": false
-    },
-    {
-      "width": 768,
-      "height": 1024,
-      "horizontalOverflow": false
-    },
-    {
-      "width": 390,
-      "height": 844,
-      "horizontalOverflow": false
-    }
+    "officialIdentityVisible": true,
+    "reducedMotion": "passed-zero-running-animations"
+  },
+  "pdfContractsPreviouslyVerified": {
+    "resumePages": 2,
+    "coverLetterPages": 1,
+    "interviewBriefPages": 2,
+    "entryPlanPages": 2
+  },
+  "remainingCompletionChecks": [
+    "Verify GitHub Pages serves the repaired main head",
+    "Inspect live desktop, laptop, tablet, mobile, and reduced-motion renders",
+    "Verify reciprocal document navigation on the deployed base path",
+    "Verify each live PDF download and confirm the downloadable PDFs carry the final KPMG brand continuity"
   ],
-  "visualReview": {
-    "fullPageScreenshotsReviewed": true,
-    "signatureHero": "GenAI Proving Ground calibration rig",
-    "lowerSectionsArtDirected": true
-  },
-  "motion": {
-    "heroProofCycle": true,
-    "outcomeTabs": true,
-    "decisionLabStateResponse": true,
-    "reducedMotionCompleteState": true,
-    "animationsRemainingInReducedMotion": 0
-  },
-  "functional": {
-    "relativeLinkIssues": 0,
-    "duplicateIdIssues": 0,
-    "unlabeledInputs": 0,
-    "missingImageAlt": 0,
-    "mobileNavigationToggle": true,
-    "keyboardOutcomeTabs": true,
-    "keyboardSliders": true
-  },
-  "pdfs": {
-    "resume": {
-      "pages": 2,
-      "pageOneBalance": "passed",
-      "source": "existing committed PDF re-verified"
-    },
-    "coverLetter": {
-      "pages": 1,
-      "source": "existing committed PDF re-verified"
-    },
-    "interviewBrief": {
-      "pages": 2,
-      "pageComposition": "passed - two deliberate consulting-report pages",
-      "source": "Chromium print from committed HTML; rendered and visually verified"
-    },
-    "entryPlan": {
-      "pages": 2,
-      "pageComposition": "passed - two deliberate consulting-report pages",
-      "source": "Chromium print from committed HTML; rendered and visually verified"
-    }
-  },
-  "liveDeployment": "unverified - outbound access to GitHub Pages is blocked in the audit environment",
-  "auditDate": "2026-07-11"
+  "liveDeployment": "not yet independently verified after the static Brand Fidelity repair"
 }
