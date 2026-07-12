@@ -1,0 +1,156 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "logoLoaded": false,
+      "logoAboveFold": false,
+      "logoRect": null,
+      "qualifier": false,
+      "primary": "#00338d",
+      "navBottom": 75.59375,
+      "focusable": 35,
+      "heroHeight": 1275.03125,
+      "pageErrors": [],
+      "pass": false
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "logoLoaded": false,
+      "logoAboveFold": false,
+      "logoRect": null,
+      "qualifier": false,
+      "primary": "#00338d",
+      "navBottom": 75.59375,
+      "focusable": 35,
+      "heroHeight": 1207.40625,
+      "pageErrors": [],
+      "pass": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "logoLoaded": false,
+      "logoAboveFold": false,
+      "logoRect": null,
+      "qualifier": false,
+      "primary": "#00338d",
+      "navBottom": 108.828125,
+      "focusable": 35,
+      "heroHeight": 2126.75,
+      "pageErrors": [],
+      "pass": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "logoLoaded": false,
+      "logoAboveFold": false,
+      "logoRect": null,
+      "qualifier": false,
+      "primary": "#00338d",
+      "navBottom": 73.984375,
+      "focusable": 35,
+      "heroHeight": 2795.71875,
+      "pageErrors": [],
+      "pass": false
+    }
+  ],
+  "reducedMotion": {
+    "running": 0,
+    "pass": true
+  },
+  "documents": [
+    {
+      "html": "resume.html",
+      "pdf": "docs/Russell-Dudek-KPMG-Resume.pdf",
+      "expected": 2,
+      "web": {
+        "logo": false,
+        "download": true,
+        "company": true,
+        "independent": false
+      },
+      "pages": 2,
+      "pageCountPass": true,
+      "pass": false
+    },
+    {
+      "html": "cover-letter.html",
+      "pdf": "docs/Russell-Dudek-KPMG-Cover-Letter.pdf",
+      "expected": 1,
+      "web": {
+        "logo": false,
+        "download": true,
+        "company": true,
+        "independent": false
+      },
+      "pages": 1,
+      "pageCountPass": true,
+      "pass": false
+    },
+    {
+      "html": "interview-brief.html",
+      "pdf": "docs/Russell-Dudek-KPMG-Interview-Brief.pdf",
+      "expected": 2,
+      "web": {
+        "logo": false,
+        "download": true,
+        "company": true,
+        "independent": false
+      },
+      "pages": 2,
+      "pageCountPass": true,
+      "pass": false
+    },
+    {
+      "html": "90-day-plan.html",
+      "pdf": "docs/Russell-Dudek-KPMG-90-Day-Plan.pdf",
+      "expected": 2,
+      "web": {
+        "logo": false,
+        "download": true,
+        "company": true,
+        "independent": false
+      },
+      "pages": 2,
+      "pageCountPass": true,
+      "pass": false
+    }
+  ],
+  "source": {
+    "required": [
+      "brand-intelligence.md",
+      "brand-tokens.css",
+      "assets/brand/kpmg-logo.svg",
+      "index.html",
+      "decision-lab.html",
+      "resume.html",
+      "cover-letter.html",
+      "interview-brief.html",
+      "90-day-plan.html",
+      "styles.css",
+      "app.js",
+      "README.md"
+    ],
+    "missing": [],
+    "pass": true,
+    "officialBlue": true,
+    "logoTitle": true
+  },
+  "errors": [],
+  "overallPass": false
+}
