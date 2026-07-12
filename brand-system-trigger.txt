@@ -1,1 +1,1 @@
-Build the official KPMG brand layer from the KPMG US Careers source, apply it across every campaign surface, render required viewports, regenerate PDFs, and commit verified output.
+Materialize the repository-native KPMG brand package, validate every campaign surface, render required viewports, regenerate PDFs, and commit only after the Brand Fidelity Contract passes.
