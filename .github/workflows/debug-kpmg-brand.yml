@@ -1,0 +1,84 @@
+name: Debug KPMG Brand Build
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'brand-debug-trigger.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  debug:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Test logo retrieval and HTML patch preconditions
+        id: test
+        continue-on-error: true
+        shell: bash
+        run: |
+          mkdir -p audit assets/brand
+          set +e
+          {
+            echo '== logo retrieval =='
+            curl --show-error --location --retry 3 --retry-all-errors \
+              --user-agent 'RoleForge/1.0 (independent candidate campaign; github.com/russelldudek)' \
+              --write-out '\nhttp_code=%{http_code}\ncontent_type=%{content_type}\nsize_download=%{size_download}\n' \
+              'https://upload.wikimedia.org/wikipedia/commons/d/db/KPMG_blue_logo.svg' \
+              -o assets/brand/kpmg-logo.svg
+            CURL_STATUS=$?
+            echo "curl_status=$CURL_STATUS"
+            if test -f assets/brand/kpmg-logo.svg; then
+              wc -c assets/brand/kpmg-logo.svg
+              file assets/brand/kpmg-logo.svg
+              head -c 96 assets/brand/kpmg-logo.svg | xxd
+              grep -qi '<svg' assets/brand/kpmg-logo.svg
+              echo "svg_grep_status=$?"
+            fi
+
+            echo '== page inventory =='
+            python3 - <<'PY'
+            from pathlib import Path
+            import re
+            pages=['index.html','decision-lab.html','resume.html','cover-letter.html','interview-brief.html','90-day-plan.html']
+            for name in pages:
+                p=Path(name)
+                print(f'{name}: exists={p.exists()} bytes={p.stat().st_size if p.exists() else 0}')
+                if not p.exists():
+                    continue
+                text=p.read_text(encoding='utf-8')
+                print(f'  styles_links={len(re.findall(r"href=[\"\']styles\\.css[\"\']", text))}')
+                print(f'  brand_links={len(re.findall(r"href=[\"\']brand-tokens\\.css[\"\']", text))}')
+                print(f'  nav_brand={bool(re.search(r"<a class=[\"\']brand", text))}')
+                print(f'  download={"Download PDF" in text}')
+                print(f'  kpmg={"KPMG" in text}')
+            print('python_patch_preconditions=success')
+            PY
+            PY_STATUS=$?
+            echo "python_status=$PY_STATUS"
+            if test "$CURL_STATUS" -ne 0 || test "$PY_STATUS" -ne 0; then
+              exit 1
+            fi
+          } > audit/brand-build-debug.txt 2>&1
+
+      - name: Commit diagnostic output
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add audit/brand-build-debug.txt
+          test -f assets/brand/kpmg-logo.svg && git add assets/brand/kpmg-logo.svg || true
+          git commit -m 'Record KPMG brand build diagnostic' || true
+          git push origin HEAD:${{ github.head_ref }} || true
+
+      - name: Fail when diagnostic failed
+        if: steps.test.outcome == 'failure'
+        run: exit 1
