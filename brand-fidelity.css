@@ -1,0 +1,227 @@
+/* Rendered KPMG brand-fidelity layer. Loaded after the original component CSS. */
+body.kpmg-brand {
+  color: var(--brand-dark);
+  background: var(--brand-cloud);
+  font-family: var(--font-body);
+}
+body.kpmg-brand::before {
+  background:
+    linear-gradient(rgba(0,51,141,.045) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(0,51,141,.045) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.kpmg-brand h1,.kpmg-brand h2,.kpmg-brand h3 {
+  font-family: var(--font-display);
+  font-weight: 760;
+}
+.kpmg-brand h1 { letter-spacing: -.055em; }
+.kpmg-brand h2 { letter-spacing: -.04em; }
+.kpmg-brand a:focus-visible,.kpmg-brand button:focus-visible,.kpmg-brand input:focus-visible {
+  outline-color: var(--campaign-signal);
+}
+.kpmg-brand .site-nav {
+  background: rgba(255,255,255,.97);
+  border-bottom: 4px solid var(--brand-primary);
+  box-shadow: 0 8px 28px rgba(0,51,141,.08);
+}
+.kpmg-brand .brand {
+  gap: .9rem;
+  color: var(--brand-primary);
+  min-width: 250px;
+}
+.kpmg-brand .brand .kpmg-nav-logo {
+  width: 86px;
+  height: 46px;
+  object-fit: contain;
+  flex: none;
+}
+.kpmg-brand .brand span { display: grid; gap: .08rem; }
+.kpmg-brand .brand strong {
+  font-size: .76rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.kpmg-brand .brand small {
+  color: #45566d;
+  font-size: .67rem;
+  letter-spacing: .025em;
+}
+.kpmg-brand .nav-links a {
+  color: var(--brand-primary);
+  border-radius: 2px;
+}
+.kpmg-brand .nav-links a:hover { background: var(--brand-mist); }
+.kpmg-brand .hero {
+  color: #fff;
+  background:
+    linear-gradient(112deg,var(--brand-primary) 0 54%,var(--brand-dark) 54% 66%,var(--brand-secondary) 66% 100%);
+  border-bottom: 12px solid var(--brand-accent);
+}
+.kpmg-brand .hero-grid { align-items: stretch; }
+.kpmg-brand .hero-copy { padding-top: 1rem; align-self: center; }
+.kpmg-brand .company-lockup {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 1.15rem;
+  align-items: center;
+  width: min(610px,100%);
+  margin: 0 0 2.1rem;
+  padding: 1rem 1.15rem;
+  background: #fff;
+  color: var(--brand-primary);
+  border-left: 8px solid var(--brand-accent);
+  box-shadow: 0 18px 48px rgba(0,18,72,.28);
+}
+.kpmg-brand .company-lockup img {
+  width: 126px;
+  height: 66px;
+  object-fit: contain;
+}
+.kpmg-brand .company-lockup div { display: grid; gap: .13rem; }
+.kpmg-brand .company-lockup span {
+  color: #526278;
+  font-size: .69rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.kpmg-brand .company-lockup strong {
+  color: var(--brand-primary);
+  font-size: clamp(1rem,1.55vw,1.25rem);
+  line-height: 1.12;
+}
+.kpmg-brand .company-lockup small {
+  color: #34465f;
+  font-size: .75rem;
+  font-weight: 700;
+}
+.kpmg-brand .hero .eyebrow { color: #bfe8ff; }
+.kpmg-brand .hero .eyebrow::before { background: var(--campaign-signal); }
+.kpmg-brand .hero-lede { color: #e5f3fa; }
+.kpmg-brand .hero-thesis { border-color: rgba(255,255,255,.4); }
+.kpmg-brand .hero-thesis span { color: #bfe8ff; }
+.kpmg-brand .hero .btn-primary {
+  background: #fff;
+  color: var(--brand-primary);
+  border-color: #fff;
+  border-radius: 2px;
+}
+.kpmg-brand .hero .btn-secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+  border-radius: 2px;
+}
+.kpmg-brand .proving-rig {
+  margin: 2.2rem 0;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 28px 72px rgba(0,15,60,.3);
+}
+.kpmg-brand .rig-topline,.kpmg-brand .sheet-head {
+  background: var(--brand-dark);
+  border-bottom: 5px solid var(--brand-accent);
+}
+.kpmg-brand .track-line {
+  background: linear-gradient(90deg,var(--brand-primary),var(--brand-secondary),var(--brand-accent));
+}
+.kpmg-brand .specimen i { background: var(--campaign-signal); }
+.kpmg-brand .rig-trace i {
+  background: linear-gradient(90deg,transparent,var(--brand-accent),var(--campaign-signal),transparent);
+}
+.kpmg-brand .rig-stations li,.kpmg-brand .asset-bins>div,.kpmg-brand .boundary-sheet,.kpmg-brand .instrument-panel,.kpmg-brand .entry-runs article {
+  border-radius: 3px;
+}
+.kpmg-brand .moment-band {
+  border-radius: 0;
+  border: 0;
+  border-top: 8px solid #fff;
+}
+.kpmg-brand .moment-band span { color: var(--brand-secondary); }
+.kpmg-brand .mandate-section {
+  background: var(--brand-primary);
+  border-top: 10px solid var(--brand-accent);
+}
+.kpmg-brand .boundary-section {
+  background: linear-gradient(135deg,var(--brand-mist),#fff 68%);
+}
+.kpmg-brand .boundary-intro blockquote { border-top-color: var(--brand-primary); }
+.kpmg-brand .boundary-sheet article>b {
+  color: var(--brand-primary);
+  background: var(--brand-mist);
+  border-radius: 2px;
+}
+.kpmg-brand .system-line span {
+  background: linear-gradient(var(--brand-primary),var(--brand-secondary),var(--brand-accent));
+}
+.kpmg-brand .balance-board article div i {
+  background: linear-gradient(90deg,var(--brand-primary) 0 48%,var(--brand-dark) 48% 52%,var(--brand-accent) 52%);
+}
+.kpmg-brand .outcome-tabs button[aria-selected="true"] {
+  background: var(--brand-primary);
+  color: #fff;
+}
+.kpmg-brand .instrument-panel article span,.kpmg-brand .entry-runs article>span,.kpmg-brand .trace-year {
+  color: var(--brand-secondary);
+}
+.kpmg-brand .objection-section { background: var(--brand-dark); }
+.kpmg-brand .final-cta {
+  background: var(--brand-primary);
+  color: #fff;
+  border-top: 10px solid var(--brand-accent);
+}
+.kpmg-brand .final-cta .eyebrow { color: #bfe8ff; }
+.kpmg-brand .final-links a { background: #fff; color: var(--brand-primary); border-radius: 2px; }
+.kpmg-brand .site-footer {
+  background: #fff;
+  color: var(--brand-primary);
+  border-top: 5px solid var(--brand-primary);
+}
+.kpmg-brand .independent-note { font-weight: 800; }
+.kpmg-brand .compact-company-lockup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: min(1180px,calc(100% - 2rem));
+  margin: 2rem auto 0;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border-left: 7px solid var(--brand-accent);
+  box-shadow: 0 12px 34px rgba(0,51,141,.12);
+}
+.kpmg-brand .compact-company-lockup img { width: 105px; height: 56px; object-fit: contain; }
+.kpmg-brand .compact-company-lockup div { display: grid; gap: .08rem; }
+.kpmg-brand .compact-company-lockup span { color: #58697e; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.kpmg-brand .compact-company-lockup strong { color: var(--brand-primary); line-height: 1.12; }
+.kpmg-brand .compact-company-lockup small { color: #45566d; font-size: .72rem; }
+.kpmg-brand .document-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding-bottom: .18in;
+  margin-bottom: .18in;
+  border-bottom: 3px solid var(--brand-primary);
+  color: var(--brand-primary);
+}
+.kpmg-brand .document-brand-lockup img { width: .86in; height: .44in; object-fit: contain; }
+.kpmg-brand .document-brand-lockup div { display: grid; gap: .01in; }
+.kpmg-brand .document-brand-lockup strong { font-size: 8.8pt; line-height: 1.1; }
+.kpmg-brand .document-brand-lockup small { font-size: 6.8pt; color: #526278; }
+@media (max-width: 900px) {
+  .kpmg-brand .hero { background: var(--brand-primary); }
+  .kpmg-brand .company-lockup { grid-template-columns: 108px 1fr; }
+  .kpmg-brand .company-lockup img { width: 104px; }
+}
+@media (max-width: 620px) {
+  .kpmg-brand .brand { min-width: 0; }
+  .kpmg-brand .brand .kpmg-nav-logo { width: 70px; height: 40px; }
+  .kpmg-brand .brand small { display: none; }
+  .kpmg-brand .company-lockup { grid-template-columns: 1fr; gap: .55rem; }
+  .kpmg-brand .company-lockup img { width: 112px; height: 54px; }
+  .kpmg-brand .compact-company-lockup { align-items: flex-start; }
+  .kpmg-brand .compact-company-lockup img { width: 82px; }
+}
+@media print {
+  .kpmg-brand .document-brand-lockup { display: flex!important; }
+  .kpmg-brand .site-nav,.kpmg-brand .compact-company-lockup { display: none!important; }
+}
