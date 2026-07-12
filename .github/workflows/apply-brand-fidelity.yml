@@ -1,3 +1,4 @@
+# Triggered after all eight staged payload chunks were committed.
 name: Apply RoleForge Brand Fidelity
 on:
   push:
