@@ -12,91 +12,75 @@
 
 - KPMG Global: https://kpmg.com/xx/en.html
 - KPMG US Careers: https://www.kpmguscareers.com/
-- Official careers header logo endpoint: https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-header-logo.svg
-- Official careers footer logo endpoint: https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-footer-logo.svg
+- Official KPMG US Careers header asset: https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-header-logo.svg
+- Official KPMG US Careers footer asset: https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-footer-logo.svg
 
-The official careers property visibly uses the KPMG four-panel wordmark and the headline language “KPMG. Make the Difference.” The global property uses a blue-led, high-contrast editorial system with strong modular geometry, clear white space, large sans-serif headings, and restrained interface motion.
+KPMG’s public properties use the four-panel blue wordmark, strong modular geometry, clear white space, large sans-serif headings, high-contrast blue fields, and restrained editorial motion.
 
 ## Official company identity
 
-- **Primary visible identity:** KPMG four-panel wordmark
-- **Local path:** `assets/brand/kpmg-logo.svg`
-- **Visible use:** navigation, above-fold candidate lockup, resume, cover letter, interview brief, and 90-day plan
-- **Usage:** nominative employer identification only
-- **Treatment:** official blue; unchanged proportions; no animation, recoloring, filters, shadows, cropping, tracing effects, or combination with the Proving Ground mark
+- **Committed asset:** `assets/brand/kpmg-logo.svg`
+- **Asset identity:** `KPMG_NoCP_RGB_278`
+- **Provenance:** exact unmodified KPMG US Careers navigation wordmark bytes, committed locally rather than hotlinked
+- **Visible use:** campaign navigation and above-fold employer lockup; restrained identifier across résumé, cover letter, interview brief, and 90-day plan
+- **Purpose:** nominative identification of the target employer only
+- **Treatment:** proportions and `#00338D` fill preserved; no redrawing, recoloring, distortion, animation, crop, filter, shadow, or fusion with the candidate-created Proving Ground mark
 
-The build environment could resolve the official KPMG careers logo endpoint but could not download the response bytes directly. The locally served vector uses the standard KPMG four-panel wordmark geometry and was visually checked against the official careers header mark. The official endpoint remains the provenance authority. This transport limitation is recorded rather than disguised.
+The official mark is paired immediately with `Candidate vision`, the target role, and Russell Dudek’s name. The campaign states that it is independent work and does not imply KPMG sponsorship, approval, employment, or endorsement.
 
-## Color token provenance
+## Color-token provenance
 
 The implementation is committed in `brand-tokens.css`.
 
-| Token | Value | Classification | Evidence/use |
+| Token | Value | Classification | Use |
 |---|---:|---|---|
-| `--brand-primary` | `#00338D` | official/source-sampled | KPMG blue; exposed by official KPMG favicon/mask metadata and used in the standard wordmark |
-| `--brand-secondary` | `#005EB8` | source-sampled | medium blue observed across KPMG digital modules and brand palette |
-| `--brand-accent` | `#0091DA` | source-sampled | light blue used for emphasis and digital interaction states |
-| `--brand-violet` | `#483698` | source-sampled | KPMG secondary palette; used sparingly for evidence-state differentiation |
-| `--brand-purple` | `#470A68` | source-sampled | KPMG secondary palette; available but not dominant |
-| `--brand-teal` | `#00A3A1` | source-sampled | KPMG secondary palette; positive proof/evidence states |
-| `--brand-dark` | `#001E5A` | source-sampled adaptation | accessible deep-blue surface derived from KPMG blue |
-| `--brand-light` | `#FFFFFF` | official/common | primary white surface and clear space |
-| `--campaign-signal` | `#F2A900` | candidate-original | small calibration signal only; subordinate to KPMG identity |
+| `--brand-primary` | `#00338D` | official/source-sampled | dominant KPMG recognition layer and wordmark blue |
+| `--brand-secondary` | `#005EB8` | source-sampled | supporting KPMG blue |
+| `--brand-accent` | `#0091DA` | source-sampled | light-blue interaction and data emphasis |
+| `--brand-violet` | `#483698` | source-sampled | restrained evidence-state differentiation |
+| `--brand-purple` | `#470A68` | source-sampled | available secondary tone; never dominant |
+| `--brand-teal` | `#00A3A1` | source-sampled | positive proof and evidence states |
+| `--brand-dark` | `#001E5A` | source-derived accessible surface | deep-blue contrast field |
+| `--brand-light` | `#FFFFFF` | official/common | clear space and document surface |
+| `--campaign-signal` | `#F2A900` | candidate-original | small calibration signal subordinate to KPMG blue |
 
-KPMG blue, white, medium blue, and light blue dominate the recognition layer. Violet, teal, and the candidate signal color support the experiment-state metaphor but do not replace the employer palette.
+KPMG blue, white, medium blue, and light blue dominate the rendered recognition layer. Candidate-original color supports the experiment metaphor without replacing the employer identity.
 
-## Typography evidence and decision
+## Typography decision
 
-Public KPMG digital properties use large, tightly composed sans-serif display typography and clear humanist sans body copy. Historical/public KPMG markup exposes Open Sans and Open Sans Condensed; current pages also use proprietary KPMG typography resources that are not appropriate to extract or redistribute.
-
-**Implementation decision:**
+KPMG’s public digital properties use tightly composed neo-grotesque/humanist sans-serif typography. Proprietary KPMG font binaries are not copied or committed.
 
 - Display: `Noto Sans Display`, with `Arial Narrow` and `Segoe UI` fallbacks
 - Body: `Noto Sans`, with `Segoe UI` and Arial fallbacks
-- No proprietary font files are copied, downloaded, or committed.
-- The structural behavior is reproduced through strong weight contrast, compact headline rhythm, restrained tracking, sentence case, and high-clarity body spacing.
+- The substitutes are licensed/system-accessible and are not represented as official KPMG fonts.
+- Brand character is carried through strong hierarchy, compact tracking, sentence case, editorial rhythm, and clear body spacing.
 
-These substitutes are not described as official KPMG fonts.
+## Visual and interface grammar
 
-## Photography and visual cues
-
-Official KPMG pages use editorial business photography, human-centered workplace imagery, strong image crops, modular blue panels, rectilinear rules, and high-contrast text blocks. No external photography is used because it is not necessary to identify the employer and would add reuse ambiguity without improving the candidate argument.
-
-Instead, the campaign uses original supporting graphics derived from documented KPMG cues:
+The campaign translates documented KPMG cues into an original candidate system:
 
 - four-panel rectilinear geometry;
-- blue-led modular surfaces;
-- strong vertical and horizontal rules;
+- KPMG-blue modular fields and rules;
+- high-contrast white/blue composition;
 - disciplined grid alignment;
-- high-contrast white/blue fields;
-- restrained violet and teal state signals;
-- editorial rather than futuristic-neon typography.
+- compact editorial labels;
+- restrained violet and teal evidence states.
 
-## Role-specific candidate visual system
-
-The **GenAI Proving Ground** remains candidate-original:
-
-- FRAME → BOUND → BUILD → STRESS → COMPOUND;
-- calibration specimen moving through proof gates;
-- evidence waveform;
-- reusable capability / reusable evidence / fast-no outputs;
-- interactive experiment decision card.
-
-This system expresses Russell’s point of view. It supplements, but does not replace, KPMG identity.
+The **GenAI Proving Ground** remains candidate-original and role-derived: FRAME → BOUND → BUILD → STRESS → COMPOUND, a calibration specimen moving through proof gates, evidence waveform, valid outcome bins, and an interactive experiment decision card. It supplements rather than replaces KPMG identity.
 
 ## Motion character
 
-KPMG’s public digital character is precise, controlled, and editorial rather than playful. The campaign therefore uses measured proof-gate progression, short state changes, and deliberate evidence accumulation. The official KPMG mark remains completely static.
+KPMG’s public digital character is precise and controlled. The campaign uses measured proof-gate progression, short state changes, and deliberate evidence accumulation. The official KPMG mark remains static. A complete reduced-motion treatment leaves all content and controls usable.
 
-## Surface-by-surface implementation
+## Surface continuity
 
-- **Website:** official KPMG logo in navigation and above-fold candidate lockup; KPMG blue-led hero; modular blue editorial grammar; Proving Ground artifact remains original.
-- **Decision lab:** official KPMG identity in navigation and artifact introduction; KPMG token system controls sliders, states, and recommendation surfaces.
-- **Resume:** restrained KPMG logo and target-role line; KPMG blue rules and section markers; conservative two-page executive layout.
-- **Cover letter:** restrained KPMG identifier and blue rule; no fake corporate letterhead; one-page application format.
-- **Interview brief / 90-day plan:** KPMG identifier, blue rules, modular report cards, and role-specific proof language.
-- **PDFs:** generated or stamped from the verified print layouts with the same KPMG identifier, blue rules, and explicit independent-candidate statement; final downloadable-file publication remains part of the completion audit.
+- **Candidate vision:** official KPMG logo in navigation and above the fold, KPMG-blue hero and modular editorial grammar, candidate-original Proving Ground artifact.
+- **Decision lab:** KPMG identifier and tokens govern controls, states, and recommendation surfaces.
+- **Résumé:** restrained KPMG identifier, blue rules and section markers, exactly two US Letter pages.
+- **Cover letter:** restrained KPMG identifier and blue rule, exactly one US Letter page, no fake corporate letterhead.
+- **Interview brief / 90-day plan:** KPMG identifier, blue rules, modular report hierarchy, and role-specific proof language.
+- **PDFs:** committed downloads preserve the same employer-aware campaign identity and print contracts.
 
 ## Independent-candidate distinction
 
-The rendered campaign states `Independent campaign by Russell Dudek` above the fold and `Not an official KPMG publication` in the footer. The site does not reproduce KPMG navigation, legal furniture, employee tools, or internal interfaces and does not imply sponsorship, approval, or endorsement.
+This is an independent candidate campaign by Russell Dudek. It is not produced, sponsored, reviewed, or endorsed by KPMG. KPMG names, public-source links, and the static official wordmark are used only to identify the employer and document public-source research.
