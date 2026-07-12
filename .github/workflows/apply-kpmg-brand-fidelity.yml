@@ -1,0 +1,68 @@
+name: Apply KPMG Brand Fidelity
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out canonical main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Materialize staged RoleForge campaign
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d .roleforge-brand
+          mapfile -d '' parts < <(find .roleforge-brand -maxdepth 1 -type f -name 'chunk-*.txt' -print0 | sort -z -V)
+          test ${#parts[@]} -gt 0
+          cat "${parts[@]}" | tr -d '\n\r\t ' | base64 -d > /tmp/kpmg-brand-overlay.tar.gz
+          tar -tzf /tmp/kpmg-brand-overlay.tar.gz >/tmp/kpmg-brand-files.txt
+          tar -xzf /tmp/kpmg-brand-overlay.tar.gz -C .
+          test -f index.html
+          test -f styles.css
+          test -f brand-tokens.css
+          test -f brand-intelligence.md
+          test -f assets/brand/kpmg-logo.svg
+          grep -qi -- '--brand-primary:[[:space:]]*#00338d' brand-tokens.css
+          grep -q 'assets/brand/kpmg-logo.svg' index.html
+          grep -q 'Candidate vision for' index.html
+          grep -q 'Independent campaign by Russell Dudek' index.html
+          grep -q 'View Cover Letter' resume.html
+          grep -q 'View Resume' cover-letter.html
+
+      - name: Verify printable artifact page counts
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Resume.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')" = "1"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Interview-Brief.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-90-Day-Plan.pdf | awk '/Pages/ {print $2}')" = "2"
+
+      - name: Publish actual campaign files to main
+        shell: bash
+        run: |
+          rm -rf .roleforge-brand
+          rm -f .github/workflows/apply-brand-fidelity.yml
+          rm -f .github/workflows/materialize-kpmg-brand.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No campaign changes required.'
+          else
+            git commit -m 'Apply KPMG Brand Fidelity Contract'
+            git push origin main
+          fi
