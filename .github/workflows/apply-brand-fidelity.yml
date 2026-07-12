@@ -23,9 +23,25 @@ jobs:
 
       - name: Materialize campaign overlay
         run: |
-          set -euxo pipefail
-          cat .roleforge-brand/chunk-*.txt | tr -d '\n ' | base64 -d > /tmp/roleforge-overlay.tar.gz
-          tar -xzf /tmp/roleforge-overlay.tar.gz -C .
+          python - <<'PY'
+          from pathlib import Path
+          import base64, io, tarfile
+
+          parts = sorted(Path('.roleforge-brand').glob('chunk-*.txt'))
+          if len(parts) != 8:
+              raise SystemExit(f'expected 8 chunks, found {len(parts)}: {[p.name for p in parts]}')
+          encoded = ''.join(p.read_text(encoding='utf-8') for p in parts)
+          encoded = ''.join(encoded.split())
+          encoded += '=' * ((4 - len(encoded) % 4) % 4)
+          payload = base64.b64decode(encoded, validate=False)
+          print(f'chunks={len(parts)} encoded={len(encoded)} decoded={len(payload)} magic={payload[:2]!r}')
+          if payload[:2] != b'\x1f\x8b':
+              raise SystemExit('decoded payload is not gzip')
+          with tarfile.open(fileobj=io.BytesIO(payload), mode='r:gz') as archive:
+              names = archive.getnames()
+              print('\n'.join(names[:160]))
+              archive.extractall('.')
+          PY
           find assets/brand -maxdepth 2 -type f -print || true
           sed -n '1,220p' brand-tokens.css || true
           grep -nE 'kpmg-logo|Candidate vision|Russell Dudek' index.html | head -40 || true
