@@ -1,3 +1,3 @@
 Materialize the staged KPMG Brand Fidelity overlay, render the complete campaign, regenerate every PDF, and commit the verified result to this branch.
 
-Deterministic-decoder trigger revision 5.
+Payload diagnostic trigger revision 6.
