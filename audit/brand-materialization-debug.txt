@@ -1,0 +1,20 @@
+.roleforge-brand/chunk-01.txt: chars=10000 sha256=09dbdb10350074b83f3a2e7442ea3ccad9c65cf92c38e0dab7a910de1bca913b
+.roleforge-brand/chunk-02.txt: chars=6000 sha256=c59d8d0e7394f3186b54111a10c5e05c0eed960d1d8e85355333e48a4f256645
+.roleforge-brand/chunk-03.txt: chars=6000 sha256=a13e870bbdc80557f76186451b3286406830f6c5014f8d5bb75b61e43aa67bd5
+.roleforge-brand/chunk-04.txt: chars=6000 sha256=237bad048298099cc26ccf5cda12e2b63532edfa1bbef75bd47a6bc5b1abc68e
+.roleforge-brand/chunk-05.txt: chars=6000 sha256=5aef855caa23dcc47ad15e3224609f43dca63b4ecaabacb631cea1464515613a
+.roleforge-brand/chunk-06.txt: chars=6000 sha256=75df775ba369ea3827fdba863cf7e7ab98182d93a4ed4915add5a88fd4ed932a
+.roleforge-brand/chunk-07.txt: chars=6000 sha256=53c3515c0a96b2055ad91a7f0e13ef3edd133296a41c43497b4466cdfbf96d0f
+.roleforge-brand/chunk-08.txt: chars=1340 sha256=c3f6a4489205a58bff890f7b73573d00e64d628768bf6df8d965bd55e05ba40a
+archive_bytes=35503
+archive_sha256=1f8386f4191cc09a3f0331a7e75cf612d5b188926a4e98d5b3e89c80f4bf559a
+archive_signature=1f8b08005a9b536a02ffecbdd9722347
+tar_members=2
+member=index.html size=20565
+member=decision-lab.html size=5733
+error=RuntimeError: missing materialized files: brand-tokens.css, assets/brand/kpmg-logo.svg
+Traceback (most recent call last):
+  File "<stdin>", line 45, in <module>
+RuntimeError: missing materialized files: brand-tokens.css, assets/brand/kpmg-logo.svg
+
+result=failure
