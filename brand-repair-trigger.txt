@@ -1,0 +1,1 @@
+Materialize the staged KPMG Brand Fidelity overlay with the deterministic decoder, run the rendered audit, regenerate every PDF, and commit the verified result.
