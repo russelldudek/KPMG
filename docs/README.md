@@ -1,0 +1,1 @@
+Generated document downloads are maintained from resume.html and cover-letter.html. The July 12, 2026 repair separates document header columns and embeds absolute campaign-site links in both source documents.
