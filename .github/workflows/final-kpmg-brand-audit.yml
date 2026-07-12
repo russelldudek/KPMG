@@ -1,0 +1,81 @@
+name: Final KPMG Brand Fidelity Audit
+
+on:
+  pull_request:
+    branches: [main]
+\permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: startsWith(github.head_ref, 'roleforge-kpmg-brand-final') && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install browser and PDF tools
+        run: |
+          npm install --prefix /tmp/kpmg-final playwright
+          /tmp/kpmg-final/node_modules/.bin/playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Render and audit campaign
+        run: |
+          mkdir -p audit/final/screenshots audit/final/pdf docs
+          cat > /tmp/final-audit.js <<'JS'
+          const { chromium }=require('/tmp/kpmg-final/node_modules/playwright');
+          const fs=require('fs'),path=require('path');
+          const root=process.cwd(),url=n=>'file://'+path.join(root,n);
+          const report={viewports:[],reducedMotion:{},documents:[],source:{},errors:[]};
+          (async()=>{
+            const required=['brand-intelligence.md','brand-tokens.css','assets/brand/kpmg-logo.svg','index.html','decision-lab.html','resume.html','cover-letter.html','interview-brief.html','90-day-plan.html','styles.css','app.js','README.md'];
+            const missing=required.filter(f=>!fs.existsSync(path.join(root,f))); report.source={required,missing,pass:missing.length===0};
+            const svg=fs.readFileSync('assets/brand/kpmg-logo.svg','utf8');
+            report.source.officialBlue=/#00338D/i.test(svg); report.source.logoTitle=/KPMG/i.test(svg);
+            const browser=await chromium.launch({headless:true});
+            for(const [width,height] of [[1440,900],[1280,800],[768,1024],[390,844]]){
+              const page=await browser.newPage({viewport:{width,height}}),errors=[]; page.on('pageerror',e=>errors.push(String(e)));
+              await page.goto(url('index.html'),{waitUntil:'load'}); await page.waitForTimeout(500);
+              const data=await page.evaluate(()=>{const logo=document.querySelector('.hero-company-lockup img'),r=logo?.getBoundingClientRect(),nav=document.querySelector('.site-nav')?.getBoundingClientRect();return{overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,logoLoaded:!!logo&&logo.complete&&logo.naturalWidth>0,logoAboveFold:!!r&&r.top>=0&&r.bottom<=innerHeight,logoRect:r?{top:r.top,bottom:r.bottom,width:r.width,height:r.height}:null,qualifier:/Independent work by Russell Dudek/i.test(document.body.innerText),primary:getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim().toLowerCase(),navBottom:nav?.bottom||0,focusable:document.querySelectorAll('a,button,input,[tabindex]').length,heroHeight:document.querySelector('.hero')?.getBoundingClientRect().height||0}});
+              data.pageErrors=errors; data.pass=!data.overflow&&data.logoLoaded&&data.logoAboveFold&&data.qualifier&&data.primary==='#00338d'&&data.focusable>5&&!errors.length; report.viewports.push({width,height,...data});
+              await page.screenshot({path:`audit/final/screenshots/index-${width}x${height}.png`,fullPage:true}); await page.close();
+            }
+            const c=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'}),p=await c.newPage();await p.goto(url('index.html'),{waitUntil:'load'});await p.waitForTimeout(350);const running=await p.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length);report.reducedMotion={running,pass:running===0};await p.screenshot({path:'audit/final/screenshots/index-reduced-motion.png',fullPage:true});await c.close();
+            for(const [html,pdf,expected] of [['resume.html','docs/Russell-Dudek-KPMG-Resume.pdf',2],['cover-letter.html','docs/Russell-Dudek-KPMG-Cover-Letter.pdf',1],['interview-brief.html','docs/Russell-Dudek-KPMG-Interview-Brief.pdf',2],['90-day-plan.html','docs/Russell-Dudek-KPMG-90-Day-Plan.pdf',2]]){const page=await browser.newPage();await page.goto(url(html),{waitUntil:'load'});const web=await page.evaluate(()=>({logo:!!document.querySelector('img[src="assets/brand/kpmg-logo.svg"]'),download:document.body.innerText.includes('Download PDF'),company:document.body.innerText.includes('KPMG'),independent:/Independent work by Russell Dudek/i.test(document.body.innerText)}));await page.emulateMedia({media:'print'});await page.pdf({path:pdf,format:'Letter',printBackground:true,margin:{top:'0',right:'0',bottom:'0',left:'0'}});report.documents.push({html,pdf,expected,web});await page.close();}
+            await browser.close();
+          })().catch(e=>report.errors.push(String(e))).finally(()=>fs.writeFileSync('audit/final/report.json',JSON.stringify(report,null,2)));
+          JS
+          node /tmp/final-audit.js
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          p=Path('audit/final/report.json');r=json.loads(p.read_text())
+          for d in r['documents']:
+              out=subprocess.check_output(['pdfinfo',d['pdf']],text=True)
+              d['pages']=int(next(x.split(':',1)[1] for x in out.splitlines() if x.startswith('Pages:')).strip())
+              d['pageCountPass']=d['pages']==d['expected']
+              d['pass']=d['pageCountPass'] and all(d['web'].values())
+          r['overallPass']=r['source']['pass'] and r['source']['officialBlue'] and r['source']['logoTitle'] and all(v['pass'] for v in r['viewports']) and r['reducedMotion']['pass'] and all(d['pass'] for d in r['documents']) and not r['errors']
+          p.write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
+          PY
+          for pdf in docs/*.pdf; do base=$(basename "$pdf" .pdf); mkdir -p "audit/final/pdf/$base"; pdftoppm -png -r 120 "$pdf" "audit/final/pdf/$base/page" >/dev/null; done
+      - name: Commit final audit evidence and PDFs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add audit/final docs
+          git diff --cached --quiet || git commit -m 'Pass final KPMG Brand Fidelity render and PDF audit'
+          git push origin HEAD:${{ github.head_ref }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kpmg-final-brand-audit
+          path: audit/final
+          if-no-files-found: warn
+      - name: Enforce final audit
+        run: python -c "import json,sys;sys.exit(0 if json.load(open('audit/final/report.json'))['overallPass'] else 1)"
