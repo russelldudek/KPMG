@@ -1,1 +1,3 @@
 Materialize the staged KPMG Brand Fidelity overlay, render the complete campaign, regenerate every PDF, and commit the verified result to this branch.
+
+Diagnostic trigger revision 2.
