@@ -1,1 +1,0 @@
-Build the KPMG brand asset package directly, apply it across every campaign surface, render all required viewports, regenerate PDFs, and commit only after the Brand Fidelity audit passes.
