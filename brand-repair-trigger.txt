@@ -1,1 +1,0 @@
-Materialize and persist the staged KPMG brand system, then run the rendered Brand Fidelity and PDF audits.
