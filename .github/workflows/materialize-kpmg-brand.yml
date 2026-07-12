@@ -1,0 +1,146 @@
+name: Materialize KPMG Brand Fidelity
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.roleforge-brand/**'
+      - 'brand-repair-trigger.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || 'roleforge-kpmg-brand-repair' }}
+          fetch-depth: 0
+
+      - name: Expand staged brand-faithful campaign
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          parts=(.roleforge-brand/chunk-*.txt)
+          test ${#parts[@]} -gt 0
+          cat "${parts[@]}" | tr -d '\n ' | base64 -d > /tmp/kpmg-brand-overlay.tar.gz
+          tar -tzf /tmp/kpmg-brand-overlay.tar.gz | sed -n '1,80p'
+          tar -xzf /tmp/kpmg-brand-overlay.tar.gz -C .
+          test -f brand-intelligence.md
+          test -f brand-tokens.css
+          test -f assets/brand/kpmg-logo.svg
+          test -f index.html
+          test -f resume.html
+          test -f cover-letter.html
+          grep -qi '#00338d' brand-tokens.css
+          grep -q 'assets/brand/kpmg-logo.svg' index.html
+          grep -q 'Candidate vision for' index.html
+          grep -q 'by Russell Dudek' index.html
+          grep -q 'View Cover Letter' resume.html
+          grep -q 'View Resume' cover-letter.html
+
+      - name: Install browser and PDF audit tools
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Render campaign and regenerate PDFs
+        shell: bash
+        run: |
+          python3 -m http.server 4173 >/tmp/kpmg-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          cat > /tmp/kpmg-audit.js <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const base = 'http://127.0.0.1:4173/';
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            fs.mkdirSync('audit/screenshots', {recursive:true});
+            const viewports = [[1440,900],[1280,800],[768,1024],[390,844]];
+            for (const [width,height] of viewports) {
+              const page = await browser.newPage({viewport:{width,height}});
+              const errors = [];
+              page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+              await page.goto(base + 'index.html', {waitUntil:'networkidle'});
+              const check = await page.evaluate(() => {
+                const root = getComputedStyle(document.documentElement);
+                const logo = document.querySelector('.company-lockup img[src="assets/brand/kpmg-logo.svg"]');
+                const blueCount = [...document.querySelectorAll('*')].filter(el => {
+                  const s = getComputedStyle(el);
+                  return [s.color,s.backgroundColor,s.borderColor].some(v => /rgb\((0, 51, 141|0, 94, 184|0, 145, 218)\)/.test(v));
+                }).length;
+                return {
+                  overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+                  logo: !!logo,
+                  qualifier: document.body.innerText.includes('by Russell Dudek'),
+                  primary: root.getPropertyValue('--brand-primary').trim().toLowerCase(),
+                  blueCount
+                };
+              });
+              if (errors.length || check.overflow || !check.logo || !check.qualifier || check.primary !== '#00338d' || check.blueCount < 3) {
+                throw new Error(`${width}x${height} failed: ${JSON.stringify({check,errors})}`);
+              }
+              await page.screenshot({path:`audit/screenshots/index-${width}x${height}.png`, fullPage:true});
+              await page.close();
+            }
+
+            const reducedContext = await browser.newContext({viewport:{width:1280,height:800}, reducedMotion:'reduce'});
+            const reduced = await reducedContext.newPage();
+            await reduced.goto(base + 'index.html', {waitUntil:'networkidle'});
+            await reduced.waitForTimeout(250);
+            const running = await reduced.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length);
+            if (running !== 0) throw new Error(`reduced-motion left ${running} running animations`);
+            await reduced.screenshot({path:'audit/screenshots/index-reduced-motion.png', fullPage:true});
+            await reducedContext.close();
+
+            fs.mkdirSync('docs', {recursive:true});
+            const docs = [
+              ['resume.html','docs/Russell-Dudek-KPMG-Resume.pdf'],
+              ['cover-letter.html','docs/Russell-Dudek-KPMG-Cover-Letter.pdf'],
+              ['interview-brief.html','docs/Russell-Dudek-KPMG-Interview-Brief.pdf'],
+              ['90-day-plan.html','docs/Russell-Dudek-KPMG-90-Day-Plan.pdf']
+            ];
+            for (const [html,pdf] of docs) {
+              const page = await browser.newPage();
+              await page.goto(base + html, {waitUntil:'networkidle'});
+              const check = await page.evaluate(() => ({
+                hasKpmg: document.body.innerText.includes('KPMG'),
+                hasDownload: document.body.innerText.includes('Download PDF')
+              }));
+              if (!check.hasKpmg || !check.hasDownload) throw new Error(`${html} failed ${JSON.stringify(check)}`);
+              await page.emulateMedia({media:'print'});
+              await page.pdf({path:pdf, format:'Letter', printBackground:true, margin:{top:'0',right:'0',bottom:'0',left:'0'}});
+              await page.close();
+            }
+            await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          JS
+          node /tmp/kpmg-audit.js
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Resume.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')" = "1"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Interview-Brief.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-90-Day-Plan.pdf | awk '/Pages/ {print $2}')" = "2"
+
+      - name: Commit verified brand-faithful campaign
+        shell: bash
+        run: |
+          rm -rf .roleforge-brand
+          rm -f brand-repair-trigger.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No materialized changes to commit.'
+          else
+            git commit -m 'Materialize KPMG Brand Fidelity campaign'
+            git push origin HEAD:${{ github.event_name == 'pull_request' && github.head_ref || 'roleforge-kpmg-brand-repair' }}
+          fi
