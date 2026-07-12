@@ -3,7 +3,8 @@ name: Final KPMG Brand Fidelity Audit
 on:
   pull_request:
     branches: [main]
-\permissions:
+
+permissions:
   contents: write
 
 jobs:
@@ -17,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
       - name: Install browser and PDF tools
         run: |
           npm install --prefix /tmp/kpmg-final playwright
