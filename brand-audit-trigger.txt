@@ -1,1 +1,1 @@
-Re-run KPMG Brand Fidelity diagnostics after converting the print lockup to a non-flowing page mark.
+Run the final durable KPMG Brand Fidelity audit against current main after the print-flow correction.
