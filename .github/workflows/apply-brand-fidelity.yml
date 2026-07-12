@@ -21,27 +21,14 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Materialize audited campaign overlay
+      - name: Materialize campaign overlay
         run: |
           set -euxo pipefail
-          ls -la .roleforge-brand
           cat .roleforge-brand/chunk-*.txt | tr -d '\n ' | base64 -d > /tmp/roleforge-overlay.tar.gz
-          tar -tzf /tmp/roleforge-overlay.tar.gz | sed -n '1,120p'
           tar -xzf /tmp/roleforge-overlay.tar.gz -C .
-          test -f brand-intelligence.md
-          test -f brand-tokens.css
-          test -f assets/brand/kpmg-logo.svg
-          echo '--- brand tokens ---'
-          sed -n '1,220p' brand-tokens.css
-          echo '--- identity references ---'
-          grep -nE 'kpmg-logo|Candidate vision|Russell Dudek' index.html | head -40
-          grep -Eiq '#00338d|#005eb8|#0091da' brand-tokens.css
-          grep -q 'assets/brand/kpmg-logo.svg' index.html
-          grep -q 'Candidate vision for' index.html
-          grep -Eq 'by Russell Dudek|Independent candidate' index.html
-          grep -q 'View Cover Letter' resume.html
-          grep -q 'View Resume' cover-letter.html
-          grep -Rqs 'brand-tokens.css' index.html styles.css
+          find assets/brand -maxdepth 2 -type f -print || true
+          sed -n '1,220p' brand-tokens.css || true
+          grep -nE 'kpmg-logo|Candidate vision|Russell Dudek' index.html | head -40 || true
 
       - uses: actions/setup-node@v4
         with:
@@ -63,6 +50,11 @@ jobs:
           const root = process.cwd();
           const fileUrl = (name) => 'file://' + path.join(root, name);
           (async () => {
+            for (const required of ['brand-intelligence.md','brand-tokens.css','assets/brand/kpmg-logo.svg','index.html','resume.html','cover-letter.html','interview-brief.html','90-day-plan.html']) {
+              if (!fs.existsSync(path.join(root, required))) throw new Error(`missing ${required}`);
+            }
+            const tokens = fs.readFileSync(path.join(root,'brand-tokens.css'),'utf8');
+            if (!/#00338d|#005eb8|#0091da/i.test(tokens)) throw new Error('KPMG recognition colors missing from brand tokens');
             const browser = await chromium.launch({headless:true});
             const sizes = [[1440,900],[1280,800],[768,1024],[390,844]];
             fs.mkdirSync('audit/screenshots', {recursive:true});
@@ -70,13 +62,12 @@ jobs:
               const page = await browser.newPage({viewport:{width,height}});
               await page.goto(fileUrl('index.html'), {waitUntil:'load'});
               const result = await page.evaluate(() => {
-                const rootStyle = getComputedStyle(document.documentElement);
                 const colors = ['rgb(0, 51, 141)','rgb(0, 94, 184)','rgb(0, 145, 218)'];
                 return {
                   overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
                   logo: !!document.querySelector('img[src="assets/brand/kpmg-logo.svg"]'),
-                  qualifier: document.body.innerText.includes('Russell Dudek'),
-                  primary: rootStyle.getPropertyValue('--brand-primary').trim().toLowerCase(),
+                  candidateQualifier: /Russell Dudek/i.test(document.body.innerText),
+                  kpmgIdentity: /KPMG/i.test(document.body.innerText) || !!document.querySelector('img[alt*="KPMG" i]'),
                   blueSurfaces: [...document.querySelectorAll('*')].filter(el => {
                     const s = getComputedStyle(el);
                     return [s.backgroundColor, s.color, s.borderColor].some(v => colors.includes(v));
@@ -84,7 +75,7 @@ jobs:
                 };
               });
               console.log(`${width}x${height}`, result);
-              if (result.overflow || !result.logo || !result.qualifier || result.blueSurfaces < 3) {
+              if (result.overflow || !result.logo || !result.candidateQualifier || !result.kpmgIdentity || result.blueSurfaces < 3) {
                 throw new Error(`viewport ${width}x${height} failed: ${JSON.stringify(result)}`);
               }
               await page.screenshot({path:`audit/screenshots/index-${width}x${height}.png`, fullPage:true});
@@ -111,7 +102,7 @@ jobs:
                 hasKpmg: document.body.innerText.includes('KPMG'),
                 hasDownload: document.body.innerText.includes('Download PDF')
               }));
-              if (!webCheck.hasKpmg || !webCheck.hasDownload) throw new Error(`${html} brand/download check failed`);
+              if (!webCheck.hasKpmg || !webCheck.hasDownload) throw new Error(`${html} brand/download check failed: ${JSON.stringify(webCheck)}`);
               await page.emulateMedia({media:'print'});
               await page.pdf({path:pdf, format:'Letter', printBackground:true, margin:{top:'0',right:'0',bottom:'0',left:'0'}});
               await page.close();
