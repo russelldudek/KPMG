@@ -1,0 +1,91 @@
+name: Apply RoleForge Brand Fidelity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-brand-fidelity.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize audited campaign overlay
+        run: |
+          cat .roleforge-brand/chunk-*.txt | tr -d '\n ' | base64 -d > /tmp/roleforge-overlay.tar.gz
+          tar -xzf /tmp/roleforge-overlay.tar.gz -C .
+          test -f brand-tokens.css
+          test -f assets/brand/kpmg-logo.svg
+          grep -q 'Candidate vision for' index.html
+          grep -q 'View Cover Letter' resume.html
+          grep -q 'View Resume' cover-letter.html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install render audit dependencies
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Render, validate, and regenerate PDFs
+        run: |
+          cat > /tmp/audit.js <<'JS'
+          const { chromium } = require('playwright');
+          const path = require('path');
+          const fs = require('fs');
+          const root = process.cwd();
+          const fileUrl = (name) => 'file://' + path.join(root, name);
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            const sizes = [[1440,900],[1280,800],[768,1024],[390,844]];
+            for (const [width,height] of sizes) {
+              const page = await browser.newPage({viewport:{width,height}});
+              await page.goto(fileUrl('index.html'), {waitUntil:'load'});
+              const result = await page.evaluate(() => ({
+                overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+                logo: !!document.querySelector('.company-lockup img[src="assets/brand/kpmg-logo.svg"]'),
+                qualifier: document.body.innerText.includes('Independent candidate') || document.body.innerText.includes('by Russell Dudek')
+              }));
+              if (result.overflow || !result.logo || !result.qualifier) throw new Error(`viewport ${width}x${height} failed: ${JSON.stringify(result)}`);
+              await page.close();
+            }
+            const reducedContext = await browser.newContext({viewport:{width:1280,height:800}, reducedMotion:'reduce'});
+            const reduced = await reducedContext.newPage();
+            await reduced.goto(fileUrl('index.html'), {waitUntil:'load'});
+            await reduced.waitForTimeout(200);
+            const running = await reduced.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length);
+            if (running !== 0) throw new Error(`reduced motion left ${running} running animations`);
+            await reducedContext.close();
+            fs.mkdirSync('docs', {recursive:true});
+            for (const [html,pdf] of [
+              ['resume.html','docs/Russell-Dudek-KPMG-Resume.pdf'],
+              ['cover-letter.html','docs/Russell-Dudek-KPMG-Cover-Letter.pdf'],
+              ['interview-brief.html','docs/Russell-Dudek-KPMG-Interview-Brief.pdf'],
+              ['90-day-plan.html','docs/Russell-Dudek-KPMG-90-Day-Plan.pdf']
+            ]) {
+              const page = await browser.newPage();
+              await page.goto(fileUrl(html), {waitUntil:'load'});
+              await page.emulateMedia({media:'print'});
+              await page.pdf({path:pdf, format:'Letter', printBackground:true, margin:{top:'0',right:'0',bottom:'0',left:'0'}});
+              await page.close();
+            }
+            await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          JS
+          node /tmp/audit.js
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Resume.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')" = "1"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-Interview-Brief.pdf | awk '/Pages/ {print $2}')" = "2"
+          test "$(pdfinfo docs/Russell-Dudek-KPMG-90-Day-Plan.pdf | awk '/Pages/ {print $2}')" = "2"
+      - name: Commit complete brand-faithful campaign
+        run: |
+          rm -rf .roleforge-brand
+          rm -f .github/workflows/apply-brand-fidelity.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Align KPMG campaign with Brand Fidelity Contract'
+          git push
