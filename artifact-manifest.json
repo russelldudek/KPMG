@@ -14,13 +14,20 @@
     "styles.css",
     "brand-tokens.css",
     "brand-fidelity.css",
+    "site-qa.css",
     "document-brand.css",
+    "document-fix.css",
     "app.js",
-    "brand-runtime.js",
     "brand-intelligence.md",
     "campaign-metadata.json",
     "README.md",
-    "audit-evidence.json"
+    "audit-evidence.json",
+    "qa/full-site-audit.json",
+    "qa/repository-finalizer-audit.json",
+    "qa/pdf-finalizer-audit.json"
+  ],
+  "removedObsoleteSource": [
+    "brand-runtime.js"
   ],
   "brandAssets": [
     "assets/brand/kpmg-logo.svg",
@@ -40,8 +47,18 @@
     "coverLetterPages": 1,
     "interviewBriefPages": 2,
     "entryPlanPages": 2,
-    "pageSize": "US Letter"
+    "pageSize": "US Letter",
+    "verifiedOnGitHubRunner": true
+  },
+  "siteQa": {
+    "routes": 6,
+    "chromiumRuns": 28,
+    "requiredViewports": ["1440x900", "1280x800", "768x1024", "390x844"],
+    "duplicateIdentityFindings": 0,
+    "horizontalOverflowFindings": 0,
+    "runtimeErrorFindings": 0,
+    "reducedMotionRunningAnimations": 0
   },
   "jobPosting": "https://www.kpmguscareers.com/jobdetail/?jobId=134718-B&srcCat=Job+Boards&specSrc=LinkedIn",
-  "state": "building-pending-live-and-pdf-verification"
+  "state": "building-pending-live-pages-verification"
 }
