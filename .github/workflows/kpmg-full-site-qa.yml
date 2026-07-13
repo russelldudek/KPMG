@@ -1,19 +1,21 @@
 name: KPMG full-site QA finalizer
 
 on:
-  push:
+  pull_request:
     branches: [main]
-    paths:
-      - '.github/workflows/kpmg-full-site-qa.yml'
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   finalize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Install document and audit tools
         run: |
           sudo apt-get update
@@ -45,8 +47,7 @@ jobs:
               path = Path(filename)
               soup = BeautifulSoup(path.read_text(), 'html.parser')
               if not soup.find('link', href='site-qa.css'):
-                  tag = soup.new_tag('link', rel='stylesheet', href='site-qa.css')
-                  soup.head.append(tag)
+                  soup.head.append(soup.new_tag('link', rel='stylesheet', href='site-qa.css'))
               nav = soup.find('nav', class_='site-nav')
               replacement = soup.new_tag('nav', attrs={'class':'site-nav','aria-label':'Campaign navigation'})
               brand = soup.new_tag('a', href='index.html', attrs={'class':'candidate-nav-brand','aria-label':'Russell Dudek KPMG Technology Innovation candidate campaign'})
@@ -66,9 +67,8 @@ jobs:
               replacement.append(menu)
               if nav: nav.replace_with(replacement)
               else: soup.body.insert(1, replacement)
-              if filename != 'index.html' and not soup.find('script', src='app.js'):
-                  script = soup.new_tag('script', src='app.js', defer=True)
-                  soup.body.append(script)
+              if not soup.find('script', src='app.js'):
+                  soup.body.append(soup.new_tag('script', src='app.js', defer=True))
               path.write_text(str(soup))
           Path('brand-runtime.js').unlink(missing_ok=True)
           PY
@@ -119,11 +119,13 @@ jobs:
           Path('qa').mkdir(exist_ok=True)
           Path('qa/repository-finalizer-audit.json').write_text(json.dumps(results,indent=2))
           PY
-      - name: Commit finalized site and downloads
+      - name: Commit finalized site and downloads to the audit branch
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
-          rm -f .github/workflows/kpmg-full-site-qa.yml
+          rm -f .github/workflows/kpmg-full-site-qa.yml .qa-finalizer-trigger
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'Finalize KPMG full-site QA and downloadable PDFs'
-          git push
+          git push origin HEAD:${HEAD_REF}
