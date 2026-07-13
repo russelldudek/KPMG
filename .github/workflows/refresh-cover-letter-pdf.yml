@@ -41,6 +41,7 @@ jobs:
               'headerComponent': 'resume-header resume-header-primary',
               'horizontalPagePaddingInches': 0.52,
               'duplicateTargetLineRemoved': True,
+              'contactSeparatorsPresent': True,
               'pdfPages': 1,
               'contactBlockPresent': True,
               'campaignUrlPresent': True,
@@ -60,6 +61,6 @@ jobs:
           rm -f .header-alignment-trigger .header-alignment-preview-trigger
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add cover-letter.html document-fix.css docs/Russell-Dudek-KPMG-Cover-Letter.pdf qa/cover-letter-header-audit.json .header-alignment-trigger .header-alignment-preview-trigger
+          git add -A
           git commit -m 'Publish aligned cover letter header and PDF' || exit 0
           git push origin HEAD:${{ github.head_ref }}
