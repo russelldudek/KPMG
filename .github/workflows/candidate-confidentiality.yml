@@ -21,7 +21,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y weasyprint poppler-utils
           python -m pip install --disable-pip-version-check beautifulsoup4
-      - name: Neutralize internal orchestration references
+      - name: Neutralize candidate-facing references
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -30,6 +30,8 @@ jobs:
           text_extensions={'.html','.md','.json','.css','.js','.svg','.txt','.yml','.yaml'}
           for path in Path('.').rglob('*'):
               if not path.is_file() or '.git' in path.parts or path.suffix.lower() not in text_extensions:
+                  continue
+              if '.github' in path.parts and 'workflows' in path.parts:
                   continue
               text=path.read_text(errors='replace')
               if path.suffix.lower()=='.html':
@@ -54,7 +56,7 @@ jobs:
           weasyprint cover-letter.html docs/Russell-Dudek-KPMG-Cover-Letter.pdf
           weasyprint interview-brief.html docs/Russell-Dudek-KPMG-Interview-Brief.pdf
           weasyprint 90-day-plan.html docs/Russell-Dudek-KPMG-90-Day-Plan.pdf
-      - name: Record exact confidentiality matches
+      - name: Record exact residual matches
         run: |
           rm -f .github/workflows/candidate-confidentiality.yml .confidentiality-trigger
           find . -type f -not -path './.git/*' -iname '*roleforge*' | sort > qa/confidentiality-filename-matches.txt || true
@@ -80,7 +82,6 @@ jobs:
               out['pdfs'][key]={'pages':pages,'expectedPages':expected,'passed':pages==expected,'bytes':Path(path).stat().st_size}
           out['passed']=not out['filenameMatches'] and not out['sourceMatches'] and not out['pdfMatches'] and all(x['passed'] for x in out['pdfs'].values())
           Path('qa/candidate-facing-confidentiality-audit.json').write_text(json.dumps(out,indent=2))
-          print(json.dumps(out,indent=2))
           PY
       - name: Commit diagnostic confidentiality result to audit branch
         env:
@@ -89,5 +90,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Record candidate-facing confidentiality audit'
+          git diff --cached --quiet || git commit -m 'Record candidate-facing confidentiality audit'
           git push origin HEAD:${HEAD_REF}
