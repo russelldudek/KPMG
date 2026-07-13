@@ -1,0 +1,9 @@
+{
+  "headerComponent": "resume-header resume-header-primary",
+  "horizontalPagePaddingInches": 0.52,
+  "duplicateTargetLineRemoved": true,
+  "pdfPages": 1,
+  "contactBlockPresent": true,
+  "campaignUrlPresent": true,
+  "passed": true
+}
