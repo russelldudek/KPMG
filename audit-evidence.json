@@ -1,45 +1,46 @@
 {
-  "auditDate": "2026-07-12",
-  "campaignState": "building-pending-live-route-verification",
-  "auditedBrandRepair": {
-    "officialWordmarkBlob": "80b068b20450b8c99f99b3291b9922500728181b",
-    "officialAssetIdentity": "KPMG_NoCP_RGB_278",
-    "officialAssetSource": "https://www.kpmguscareers.com/wp-content/themes/understrap-child-main/src/imgs/kpmg-header-logo.svg",
-    "assetTreatment": "exact unmodified locally committed SVG; static; original proportions and #00338D fill preserved",
-    "visibleCompanyIdentityAboveFold": "passed-on-main",
-    "independentCandidateQualifier": "passed-on-main",
-    "colorTokenProvenance": "passed-on-main",
-    "typographyDecision": "documented licensed-system substitutes; no proprietary font binaries",
-    "brandAssetPackage": "passed-on-main",
-    "documentBrandContinuity": "passed-on-main",
-    "staticRoutesBranded": [
-      "index.html",
-      "decision-lab.html",
-      "resume.html",
-      "cover-letter.html",
-      "interview-brief.html",
-      "90-day-plan.html"
-    ]
+  "auditDate": "2026-07-13",
+  "campaignState": "building-pending-live-pages-verification",
+  "verifiedArtifactCommit": "e4c16f11bdce6d0831c9da603969d9797096a524",
+  "rootCause": "app.js loaded brand-runtime.js after the static KPMG identity was already present, causing a second employer lockup on the decision lab and potential duplicate document/report branding.",
+  "repairs": [
+    "Removed brand-runtime.js and the dynamic branding loader.",
+    "Established one candidate navigation identity and one static KPMG employer lockup per route.",
+    "Normalized all six route menus, active states, keyboard Escape behavior, outside-click close, and mobile composition.",
+    "Rebuilt resume and cover-letter identity/contact headers.",
+    "Regenerated all four PDFs from the repaired main-equivalent source.",
+    "Hardened interview-brief and entry-plan print density for consistent two-page output on GitHub's WeasyPrint runner."
+  ],
+  "sourceAudit": {
+    "routes": 6,
+    "h1PerRoute": 1,
+    "navigationSystemsPerRoute": 1,
+    "companyLockupsPerRoute": 1,
+    "duplicateIds": 0,
+    "brokenInternalLinks": 0,
+    "obsoleteBrandRuntimeRemoved": true
   },
-  "renderedRepairEvidence": {
-    "method": "Playwright review of the committed-equivalent KPMG brand system with local assets",
-    "viewports": {
-      "1440x900": "passed-no-overflow-logo-visible",
-      "1280x800": "passed-no-overflow-logo-visible",
-      "768x1024": "passed-no-overflow-logo-visible",
-      "390x844": "passed-no-overflow-logo-visible"
-    },
-    "reducedMotion": "passed-zero-running-animations"
+  "renderedAudit": {
+    "browser": "Chromium",
+    "runs": 28,
+    "viewports": ["1440x900", "1280x800", "768x1024", "390x844"],
+    "horizontalOverflowFindings": 0,
+    "runtimeErrorFindings": 0,
+    "duplicateIdentityFindings": 0,
+    "mobileMenu": "passed",
+    "decisionLabSliders": "passed",
+    "homeOutcomeTabs": "passed",
+    "reducedMotionRunningAnimations": 0
   },
-  "committedPdfContracts": {
-    "resumePages": 2,
-    "coverLetterPages": 1,
-    "interviewBriefPages": 2,
-    "entryPlanPages": 2,
-    "pageSize": "US Letter"
+  "pdfAudit": {
+    "resume": {"pages": 2, "expectedPages": 2, "passed": true, "verifiedContactBlock": true, "verifiedCampaignUrl": true},
+    "coverLetter": {"pages": 1, "expectedPages": 1, "passed": true, "verifiedContactBlock": true, "verifiedCampaignUrl": true},
+    "interviewBrief": {"pages": 2, "expectedPages": 2, "passed": true},
+    "entryPlan": {"pages": 2, "expectedPages": 2, "passed": true},
+    "renderer": "GitHub Actions Ubuntu runner with WeasyPrint and Poppler"
   },
   "brandFidelity": {
-    "brandFidelity": "passed",
+    "brandFidelity": "passed-on-source-and-rendered-audit",
     "visibleCompanyIdentity": "passed",
     "officialLogoWordmark": "used",
     "colorTokenProvenance": "passed",
@@ -49,9 +50,9 @@
     "independentCandidateDistinction": "passed"
   },
   "remainingCompletionChecks": [
-    "Verify GitHub Pages serves the repaired main head",
-    "Verify reciprocal document navigation on the deployed /KPMG/ base path",
-    "Verify all live PDF download responses"
+    "Verify GitHub Pages serves the repaired current main head rather than cached output.",
+    "Exercise live reciprocal resume and cover-letter navigation under the /KPMG/ base path.",
+    "Open each live PDF download response and confirm it matches the committed main blob."
   ],
-  "liveDeployment": "not independently verified after the final official-wordmark replacement"
+  "liveDeployment": "The Pages endpoint is not reachable from the current audit environment; live verification remains unclaimed."
 }
