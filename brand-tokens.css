@@ -18,7 +18,7 @@
   --campaign-pass: #00A3A1;
   --campaign-hold: #483698;
 
-  /* Aliases consumed by the existing RoleForge component system */
+  /* Aliases consumed by the existing campaign component system */
   --ink: var(--brand-primary);
   --ink-2: var(--brand-dark);
   --blue: var(--brand-primary);

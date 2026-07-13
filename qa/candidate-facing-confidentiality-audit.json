@@ -1,0 +1,33 @@
+{
+  "auditDate": "2026-07-13",
+  "filenameMatches": [],
+  "sourceMatches": [],
+  "pdfMatches": [],
+  "pdfs": {
+    "resume": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 29971
+    },
+    "coverLetter": {
+      "pages": 1,
+      "expectedPages": 1,
+      "passed": true,
+      "bytes": 19483
+    },
+    "interviewBrief": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 30174
+    },
+    "entryPlan": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 30018
+    }
+  },
+  "passed": true
+}

@@ -1,6 +1,6 @@
 # KPMG Technology Innovation Candidate Campaign
 
-Independent RoleForge campaign for **Russell Dudek** targeting **Associate Director, Technology Innovation** in KPMG Digital Nexus.
+Independent candidate campaign for **Russell Dudek** targeting **Associate Director, Technology Innovation** in KPMG Digital Nexus.
 
 ## Campaign metadata
 
@@ -62,6 +62,6 @@ The four PDFs were regenerated and verified on a GitHub-hosted Ubuntu runner usi
 - `qa/full-site-audit.json` — retained Chromium render evidence: 28 runs across all six routes, desktop/laptop/tablet/mobile, interactions, mobile navigation, and reduced motion.
 - `qa/repository-finalizer-audit.json` — main-branch route structure, identity count, duplicate-ID, and internal-link audit.
 - `qa/pdf-finalizer-audit.json` — exact PDF page counts, file sizes, and contact/campaign-link extraction.
-- `audit-evidence.json` — consolidated RoleForge audit record and remaining deployment gate.
+- `audit-evidence.json` — consolidated campaign audit record and remaining deployment gate.
 
 Source, rendered, responsive, interaction, reduced-motion, navigation, identity, and PDF audits pass. GitHub Pages live-route verification remains separate because the Pages endpoint is not reachable from the current audit environment; the campaign remains `building-pending-live-pages-verification` until the deployed routes and PDF responses are checked against the current `main` head.
