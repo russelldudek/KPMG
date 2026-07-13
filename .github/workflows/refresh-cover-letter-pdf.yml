@@ -33,6 +33,7 @@ jobs:
           grep -q 'russelldudek@gmail.com' /tmp/cover-letter.txt
           grep -q 'linkedin.com/in/russelldudek' /tmp/cover-letter.txt
           grep -q 'russelldudek.github.io/KPMG/' /tmp/cover-letter.txt
+          pdftoppm -png -singlefile -r 120 docs/Russell-Dudek-KPMG-Cover-Letter.pdf qa/cover-letter-header-preview
           python - <<'PY'
           import json
           from pathlib import Path
@@ -46,11 +47,19 @@ jobs:
               'passed': True
           }, indent=2) + '\n')
           PY
+      - name: Upload visual proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: cover-letter-header-preview
+          path: |
+            docs/Russell-Dudek-KPMG-Cover-Letter.pdf
+            qa/cover-letter-header-preview.png
+            qa/cover-letter-header-audit.json
       - name: Commit verified PDF to audit branch
         run: |
-          rm -f .header-alignment-trigger
+          rm -f .header-alignment-trigger .header-alignment-preview-trigger
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add cover-letter.html document-fix.css docs/Russell-Dudek-KPMG-Cover-Letter.pdf qa/cover-letter-header-audit.json .header-alignment-trigger
-          git commit -m 'Publish aligned cover letter header and PDF'
+          git add cover-letter.html document-fix.css docs/Russell-Dudek-KPMG-Cover-Letter.pdf qa/cover-letter-header-audit.json .header-alignment-trigger .header-alignment-preview-trigger
+          git commit -m 'Publish aligned cover letter header and PDF' || exit 0
           git push origin HEAD:${{ github.head_ref }}
