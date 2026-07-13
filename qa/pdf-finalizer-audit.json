@@ -1,0 +1,38 @@
+{
+  "resume": {
+    "path": "docs/Russell-Dudek-KPMG-Resume.pdf",
+    "pages": 2,
+    "expectedPages": 2,
+    "pageCountPassed": true,
+    "bytes": 29973,
+    "hasCampaignUrl": true,
+    "hasPhone": true
+  },
+  "coverLetter": {
+    "path": "docs/Russell-Dudek-KPMG-Cover-Letter.pdf",
+    "pages": 1,
+    "expectedPages": 1,
+    "pageCountPassed": true,
+    "bytes": 19482,
+    "hasCampaignUrl": true,
+    "hasPhone": true
+  },
+  "interviewBrief": {
+    "path": "docs/Russell-Dudek-KPMG-Interview-Brief.pdf",
+    "pages": 3,
+    "expectedPages": 2,
+    "pageCountPassed": false,
+    "bytes": 31658,
+    "hasCampaignUrl": false,
+    "hasPhone": false
+  },
+  "entryPlan": {
+    "path": "docs/Russell-Dudek-KPMG-90-Day-Plan.pdf",
+    "pages": 3,
+    "expectedPages": 2,
+    "pageCountPassed": false,
+    "bytes": 31769,
+    "hasCampaignUrl": false,
+    "hasPhone": false
+  }
+}
