@@ -26,65 +26,55 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from bs4 import BeautifulSoup
-
-          routes = [
-              ('index.html', 'Vision'),
-              ('decision-lab.html', 'Decision lab'),
-              ('90-day-plan.html', '90-day plan'),
-              ('interview-brief.html', 'Interview brief'),
-              ('resume.html', 'Resume'),
-              ('cover-letter.html', 'Cover letter'),
-          ]
-          links = [
-              ('index.html', 'Vision'),
-              ('decision-lab.html', 'Decision lab'),
-              ('90-day-plan.html', '90-day plan'),
-              ('interview-brief.html', 'Interview brief'),
-              ('resume.html', 'Resume'),
-              ('cover-letter.html', 'Cover letter'),
-          ]
-          for filename, active in routes:
-              path = Path(filename)
-              soup = BeautifulSoup(path.read_text(), 'html.parser')
-              if not soup.find('link', href='site-qa.css'):
-                  soup.head.append(soup.new_tag('link', rel='stylesheet', href='site-qa.css'))
-              nav = soup.find('nav', class_='site-nav')
-              replacement = soup.new_tag('nav', attrs={'class':'site-nav','aria-label':'Campaign navigation'})
-              brand = soup.new_tag('a', href='index.html', attrs={'class':'candidate-nav-brand','aria-label':'Russell Dudek KPMG Technology Innovation candidate campaign'})
-              strong = soup.new_tag('strong'); strong.string = 'Russell Dudek'
-              small = soup.new_tag('small'); small.string = 'KPMG Technology Innovation candidate campaign'
-              brand.extend([strong, small]); replacement.append(brand)
-              toggle = soup.new_tag('button', attrs={'class':'nav-toggle','type':'button','aria-controls':'primary-nav','aria-expanded':'false'})
-              span = soup.new_tag('span'); span.string = 'Menu'
-              icon = soup.new_tag('i', attrs={'aria-hidden':'true'})
-              toggle.extend([span, icon]); replacement.append(toggle)
-              menu = soup.new_tag('div', id='primary-nav', attrs={'class':'nav-links'})
-              for href, label in links:
-                  link = soup.new_tag('a', href=href)
-                  link.string = label
-                  if label == active: link['aria-current'] = 'page'
+          routes=[('index.html','Vision'),('decision-lab.html','Decision lab'),('90-day-plan.html','90-day plan'),('interview-brief.html','Interview brief'),('resume.html','Resume'),('cover-letter.html','Cover letter')]
+          for filename,active in routes:
+              path=Path(filename); soup=BeautifulSoup(path.read_text(),'html.parser')
+              if not soup.find('link',href='site-qa.css'): soup.head.append(soup.new_tag('link',rel='stylesheet',href='site-qa.css'))
+              nav=soup.find('nav',class_='site-nav')
+              replacement=soup.new_tag('nav',attrs={'class':'site-nav','aria-label':'Campaign navigation'})
+              brand=soup.new_tag('a',href='index.html',attrs={'class':'candidate-nav-brand','aria-label':'Russell Dudek KPMG Technology Innovation candidate campaign'})
+              strong=soup.new_tag('strong'); strong.string='Russell Dudek'
+              small=soup.new_tag('small'); small.string='KPMG Technology Innovation candidate campaign'
+              brand.extend([strong,small]); replacement.append(brand)
+              toggle=soup.new_tag('button',attrs={'class':'nav-toggle','type':'button','aria-controls':'primary-nav','aria-expanded':'false'})
+              span=soup.new_tag('span'); span.string='Menu'; icon=soup.new_tag('i',attrs={'aria-hidden':'true'}); toggle.extend([span,icon]); replacement.append(toggle)
+              menu=soup.new_tag('div',id='primary-nav',attrs={'class':'nav-links'})
+              for href,label in routes:
+                  link=soup.new_tag('a',href=href); link.string=label
+                  if label==active: link['aria-current']='page'
                   menu.append(link)
               replacement.append(menu)
               if nav: nav.replace_with(replacement)
-              else: soup.body.insert(1, replacement)
-              if not soup.find('script', src='app.js'):
-                  soup.body.append(soup.new_tag('script', src='app.js', defer=True))
+              else: soup.body.insert(1,replacement)
+              if not soup.find('script',src='app.js'): soup.body.append(soup.new_tag('script',src='app.js',defer=True))
               path.write_text(str(soup))
           Path('brand-runtime.js').unlink(missing_ok=True)
           PY
-      - name: Regenerate all downloadable PDFs
+      - name: Regenerate all downloadable PDFs and record exact results
         run: |
-          mkdir -p docs
+          mkdir -p docs qa
           weasyprint resume.html docs/Russell-Dudek-KPMG-Resume.pdf
           weasyprint cover-letter.html docs/Russell-Dudek-KPMG-Cover-Letter.pdf
           weasyprint interview-brief.html docs/Russell-Dudek-KPMG-Interview-Brief.pdf
           weasyprint 90-day-plan.html docs/Russell-Dudek-KPMG-90-Day-Plan.pdf
-          test "$(pdfinfo docs/Russell-Dudek-KPMG-Resume.pdf | awk '/Pages/ {print $2}')" = "2"
-          test "$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')" = "1"
-          test "$(pdfinfo docs/Russell-Dudek-KPMG-Interview-Brief.pdf | awk '/Pages/ {print $2}')" = "2"
-          test "$(pdfinfo docs/Russell-Dudek-KPMG-90-Day-Plan.pdf | awk '/Pages/ {print $2}')" = "2"
-          pdftotext docs/Russell-Dudek-KPMG-Resume.pdf - | grep -q '412.287.8640'
-          pdftotext docs/Russell-Dudek-KPMG-Cover-Letter.pdf - | grep -q 'russelldudek.github.io/KPMG/'
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          files={
+            'resume':('docs/Russell-Dudek-KPMG-Resume.pdf',2),
+            'coverLetter':('docs/Russell-Dudek-KPMG-Cover-Letter.pdf',1),
+            'interviewBrief':('docs/Russell-Dudek-KPMG-Interview-Brief.pdf',2),
+            'entryPlan':('docs/Russell-Dudek-KPMG-90-Day-Plan.pdf',2),
+          }
+          result={}
+          for key,(path,expected) in files.items():
+              info=subprocess.check_output(['pdfinfo',path],text=True)
+              pages=int(next(line.split(':',1)[1] for line in info.splitlines() if line.startswith('Pages:')).strip())
+              text=subprocess.check_output(['pdftotext',path,'-'],text=True,errors='replace')
+              result[key]={'path':path,'pages':pages,'expectedPages':expected,'pageCountPassed':pages==expected,'bytes':Path(path).stat().st_size,'hasCampaignUrl':'russelldudek.github.io/KPMG/' in text,'hasPhone':'412.287.8640' in text}
+          Path('qa/pdf-finalizer-audit.json').write_text(json.dumps(result,indent=2))
+          print(json.dumps(result,indent=2))
+          PY
       - name: Source and navigation audit
         run: |
           python - <<'PY'
@@ -101,25 +91,16 @@ jobs:
                   href=a['href']
                   if href.startswith(('http:','https:','mailto:','tel:','#')): continue
                   if not Path(href.split('#')[0]).exists(): broken.append(href)
-              results[route]={
-                  'h1_count':len(soup.find_all('h1')),
-                  'nav_count':len(soup.find_all('nav',class_='site-nav')),
-                  'candidate_nav_count':len(soup.find_all('a',class_='candidate-nav-brand')),
-                  'active_route_count':len(soup.select('[aria-current="page"]')),
-                  'duplicate_ids':sorted({x for x in ids if ids.count(x)>1}),
-                  'broken_internal_links':broken,
-                  'site_qa_loaded':bool(soup.find('link',href='site-qa.css')),
-              }
+              results[route]={'h1_count':len(soup.find_all('h1')),'nav_count':len(soup.find_all('nav',class_='site-nav')),'candidate_nav_count':len(soup.find_all('a',class_='candidate-nav-brand')),'active_route_count':len(soup.select('[aria-current="page"]')),'duplicate_ids':sorted({x for x in ids if ids.count(x)>1}),'broken_internal_links':broken,'site_qa_loaded':bool(soup.find('link',href='site-qa.css')),'static_company_lockups':len(soup.select('.company-lockup,.report-brandline,.resume-kpmg-logo,.letter-target img'))}
               assert results[route]['h1_count']==1
               assert results[route]['nav_count']==1
               assert results[route]['candidate_nav_count']==1
               assert results[route]['active_route_count']==1
               assert not results[route]['duplicate_ids']
               assert not results[route]['broken_internal_links']
-          Path('qa').mkdir(exist_ok=True)
           Path('qa/repository-finalizer-audit.json').write_text(json.dumps(results,indent=2))
           PY
-      - name: Commit finalized site and downloads to the audit branch
+      - name: Commit diagnostic finalization to audit branch
         env:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
