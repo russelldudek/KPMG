@@ -1,0 +1,11 @@
+{
+  "sharedHeaderComponent": "resume-header resume-header-primary",
+  "horizontalPagePaddingInches": 0.52,
+  "duplicateTargetLineRemovedFromCoverLetter": true,
+  "contactSeparatorsPresent": true,
+  "resumePages": 2,
+  "coverLetterPages": 1,
+  "contactBlockPresentInBoth": true,
+  "campaignUrlPresentInBoth": true,
+  "passed": true
+}
