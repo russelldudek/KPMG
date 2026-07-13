@@ -1,0 +1,72 @@
+{
+  "auditDate": "2026-07-13",
+  "scope": "all six HTML routes, shared navigation and identity system, responsive behavior, reduced motion, interactions, internal links, and all four PDFs",
+  "rootCause": "Static KPMG identity was already present, while app.js loaded brand-runtime.js, which injected a second employer lockup and additional document/report brand bars.",
+  "defectsFoundAndRepaired": [
+    "Removed the redundant runtime branding injector and deleted brand-runtime.js.",
+    "Rebuilt navigation as a candidate-only text identity so each route has exactly one KPMG employer lockup.",
+    "Unified all six route menus, active states, Escape behavior, outside-click close, and mobile layout.",
+    "Corrected the mobile active-route style that rendered white text on a transparent menu row.",
+    "Rebuilt resume and cover-letter headers as single identity systems with verified contact information.",
+    "Corrected the resume page-two continuation header and balanced the second page with verified technical evidence.",
+    "Corrected cover-letter target-role clipping and retained working candidate-vision, resume, and decision-lab hyperlinks.",
+    "Regenerated report PDFs from current branded HTML so the KPMG identifier is present in the downloads.",
+    "Added a compact KPMG continuation header to page two of the 90-day plan."
+  ],
+  "sourceAudit": {
+    "routes": 6,
+    "duplicateIds": 0,
+    "brokenInternalLinks": 0,
+    "h1PerRoute": 1,
+    "navPerRoute": 1,
+    "navLogoCountPerRoute": 0,
+    "visibleEmployerIdentityBlocksPerRoute": 1,
+    "appJsSyntax": "passed"
+  },
+  "renderAudit": {
+    "browser": "Chromium",
+    "runs": 28,
+    "viewports": ["1440x900", "1280x800", "768x1024", "390x844"],
+    "horizontalOverflowFindings": 0,
+    "runtimeErrorFindings": 0,
+    "duplicateIdentityFindings": 0,
+    "mobileMenuChecks": "passed",
+    "decisionLabSliderChecks": "passed",
+    "homeOutcomeTabCheck": "passed",
+    "reducedMotionRunningAnimations": 0
+  },
+  "visualReview": {
+    "finalTopRendersReviewed": 13,
+    "fullPageDesktopRendersReviewed": ["index", "decision-lab", "90-day-plan", "interview-brief", "resume"],
+    "decisionLabDoubleBanner": "removed",
+    "mobileOpenMenu": "reviewed",
+    "documentHeaders": "reviewed"
+  },
+  "pdfAudit": {
+    "Russell-Dudek-KPMG-Resume.pdf": {
+      "pages": 2,
+      "page_ok": true,
+      "contact_presence": {
+        "Pittsburgh, Pennsylvania": true,
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/KPMG/": true
+      }
+    },
+    "Russell-Dudek-KPMG-Cover-Letter.pdf": {
+      "pages": 1,
+      "page_ok": true,
+      "contact_presence": {
+        "Pittsburgh, Pennsylvania": true,
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/KPMG/": true
+      }
+    },
+    "Russell-Dudek-KPMG-Interview-Brief.pdf": {"pages": 2, "page_ok": true},
+    "Russell-Dudek-KPMG-90-Day-Plan.pdf": {"pages": 2, "page_ok": true}
+  },
+  "remainingGate": "Verify the deployed GitHub Pages output after main propagation, including live reciprocal navigation and live PDF download responses."
+}
