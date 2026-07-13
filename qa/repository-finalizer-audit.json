@@ -1,0 +1,62 @@
+{
+  "index.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  },
+  "decision-lab.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  },
+  "90-day-plan.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  },
+  "interview-brief.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  },
+  "resume.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  },
+  "cover-letter.html": {
+    "h1_count": 1,
+    "nav_count": 1,
+    "candidate_nav_count": 1,
+    "active_route_count": 1,
+    "duplicate_ids": [],
+    "broken_internal_links": [],
+    "site_qa_loaded": true,
+    "static_company_lockups": 1
+  }
+}
