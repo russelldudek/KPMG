@@ -1,0 +1,39 @@
+/* Full-site QA corrections: one employer lockup per page, consistent navigation, resilient responsive behavior. */
+.site-nav{min-height:64px}
+.site-nav .candidate-nav-brand{display:grid;gap:.05rem;min-width:0;text-decoration:none;color:var(--brand-primary,#00338D);line-height:1.05}
+.site-nav .candidate-nav-brand strong{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.site-nav .candidate-nav-brand small{font-size:.68rem;color:#45566d;letter-spacing:.025em}
+.site-nav .candidate-nav-brand::before{content:"";display:block;width:42px;height:4px;margin-bottom:.35rem;background:linear-gradient(90deg,var(--brand-primary,#00338D) 0 56%,var(--brand-accent,#0091DA) 56%)}
+.site-nav .nav-links a[aria-current="page"]{background:var(--brand-primary,#00338D);color:#fff}
+.site-nav .nav-links a[aria-current="page"]:hover{background:var(--brand-dark,#001E5A)}
+.lab-page{padding-top:3.25rem}
+.lab-hero .artifact-lockup{grid-template-columns:108px 1fr;width:min(560px,100%);margin:0 0 1.35rem;padding:.8rem 1rem;box-shadow:0 12px 32px rgba(0,51,141,.12);border-left-width:6px}
+.lab-hero .artifact-lockup img{width:104px;height:54px}
+.lab-hero .artifact-lockup strong{font-size:1rem}
+.site-footer .shell,.site-footer .footer-grid{gap:.75rem 1.25rem;flex-wrap:wrap}
+[id]{scroll-margin-top:88px}
+@media(max-width:900px){.site-nav{align-items:center;flex-wrap:wrap}.site-nav .nav-toggle{display:flex;align-items:center;gap:.55rem}.site-nav .nav-links{display:none;position:absolute;top:100%;left:1rem;right:1rem;padding:.7rem;background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);z-index:100}.site-nav .nav-links.is-open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.site-nav .nav-links a{padding:.72rem}.site-nav .candidate-nav-brand small{display:block}.lab-page{padding-top:2.4rem}}
+@media(max-width:560px){.site-nav .candidate-nav-brand small{font-size:.63rem}.site-nav .nav-links.is-open{grid-template-columns:1fr}.lab-hero .artifact-lockup{grid-template-columns:1fr;gap:.35rem}.lab-hero .artifact-lockup img{width:96px;height:48px}}
+@media print{.site-nav,.nav-toggle{display:none!important}}
+/* Override legacy document-route mobile navigation so the menu has one state model. */
+@media(max-width:900px){
+  body.kpmg-brand .site-nav .nav-links,
+  body.doc-body .site-nav .nav-links,
+  body.report-body .site-nav .nav-links{display:none;position:absolute;top:100%;left:1rem;right:1rem;width:auto;padding:.7rem;background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);z-index:100;overflow:visible;flex-wrap:initial}
+  body.kpmg-brand .site-nav .nav-links.is-open,
+  body.doc-body .site-nav .nav-links.is-open,
+  body.report-body .site-nav .nav-links.is-open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.kpmg-brand .site-nav .nav-links a,
+  body.doc-body .site-nav .nav-links a,
+  body.report-body .site-nav .nav-links a{white-space:normal;background:transparent;border:0}
+}
+@media(max-width:560px){
+  body.kpmg-brand .site-nav .nav-links.is-open,
+  body.doc-body .site-nav .nav-links.is-open,
+  body.report-body .site-nav .nav-links.is-open{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  body.kpmg-brand .site-nav .nav-links a[aria-current="page"],
+  body.doc-body .site-nav .nav-links a[aria-current="page"],
+  body.report-body .site-nav .nav-links a[aria-current="page"]{background:var(--brand-primary,#00338D)!important;color:#fff!important}
+}
