@@ -1,1 +1,27 @@
-.document-target,.report-brandline{display:flex;align-items:center;gap:.16in;margin:0 0 .18in;padding:0 0 .14in;border-bottom:3px solid #00338D;color:#00338D;font-family:"Noto Sans","Segoe UI",Arial,sans-serif;font-size:7.2pt;font-weight:800;letter-spacing:.025em}.document-target img,.report-brandline img{width:.72in;height:.42in;object-fit:contain;flex:none}.doc-body .resume-section h2,.doc-body .letter-meta,.report-body .eyebrow{color:#00338D}.doc-body .capability{border-radius:2px;border-color:#B8C7DB;background:#F3F6FA}.doc-body .print-page,.doc-body .letter-page{border-top:6px solid #00338D}.report-body .brief-card,.report-body .score-item{border-radius:3px}.report-body .section-head{border-top:8px solid #00338D}@media print{.document-target,.report-brandline{display:flex!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.document-target img,.report-brandline img{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.report-brandline{display:flex;align-items:center;gap:.16in;margin:0 0 .18in;padding:0 0 .14in;border-bottom:3px solid #00338D;color:#00338D;font-family:"Noto Sans","Segoe UI",Arial,sans-serif;font-size:7.2pt;font-weight:800;letter-spacing:.025em}.report-brandline img{width:.72in;height:.42in;object-fit:contain;flex:none}.doc-body .resume-section h2,.doc-body .letter-meta,.report-body .eyebrow{color:#00338D}.doc-body .capability{border-radius:2px;border-color:#B8C7DB;background:#F3F6FA}.doc-body .print-page,.doc-body .letter-page{border-top:6px solid #00338D}.report-body .brief-card,.report-body .score-item{border-radius:3px}.report-body .section-head{border-top:8px solid #00338D}.report-continuation{display:none}
+@media print{
+  .report-brandline{display:flex!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;margin-bottom:.10in;padding-bottom:.075in;font-size:6.8pt}.report-brandline img{-webkit-print-color-adjust:exact;print-color-adjust:exact;width:.62in;height:.34in}
+  .report-continuation{display:flex!important;grid-column:1/-1;align-items:center;gap:.08in;margin:0 0 .065in;padding:0 0 .05in;border-bottom:2px solid #00338D;color:#00338D;font-family:"Noto Sans","Segoe UI",Arial,sans-serif}
+  .report-continuation img{width:.48in;height:.25in;object-fit:contain;flex:none}.report-continuation span{flex:1;font-size:6.9pt;font-weight:800;letter-spacing:.02em}.report-continuation b{font-size:6.7pt;color:#4F5F73;white-space:nowrap}
+  /* Robust two-page composition across WeasyPrint versions. */
+  .report-body .brief-page>.shell>.section-head{padding:.28in .42in .11in!important}
+  .report-body .brief-page>.shell>.section-head h1{font-size:27pt!important;line-height:.94!important;margin:.04in 0 .07in!important;max-width:none!important}
+  .report-body .brief-page>.shell>.section-head>p{font-size:8.35pt!important;line-height:1.22!important;margin:0!important}
+  .brief-report .brief-page>.shell>.brief-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.055in!important;padding:0 .42in .24in!important}
+  .brief-report .brief-card{padding:.075in .095in!important;font-size:8.05pt!important;line-height:1.17!important;border-radius:3px!important}
+  .brief-report .brief-card h2{font-size:9.65pt!important;line-height:1.08!important;margin:0 0 .025in!important}
+  .brief-report .brief-card p{margin:0 0 .035in!important}.brief-report .brief-card p:last-child{margin-bottom:0!important}
+  .brief-report .brief-card ul,.brief-report .brief-card ol{margin:.02in 0 0!important;padding-left:.145in!important}.brief-report .brief-card li{margin:0!important}
+  .brief-report .source-list{grid-template-columns:1fr 1fr!important;gap:.025in!important}.brief-report .source-list a{padding:.025in .045in!important;font-size:6.75pt!important;line-height:1.12!important}
+  .plan-report section{padding:.07in .42in .085in!important}
+  .plan-report .brief-page>.shell>.section-head{padding:.26in .42in .10in!important}
+  .plan-report .brief-page>.shell>.section-head h1{font-size:26pt!important;line-height:.94!important;margin:.035in 0 .06in!important;max-width:none!important}
+  .plan-report .brief-page>.shell>.section-head>p{font-size:8.15pt!important;line-height:1.2!important;margin:0!important}
+  .plan-report section .section-head{margin-bottom:.04in!important;border-top-width:5px!important;padding-top:.04in!important}
+  .plan-report section .section-head h2{font-size:16.5pt!important;line-height:.98!important;margin:0 0 .02in!important}
+  .plan-report section .brief-grid{gap:.045in!important}
+  .plan-report section .brief-card{padding:.055in .07in!important;font-size:7.55pt!important;line-height:1.13!important}
+  .plan-report section .brief-card h2{font-size:9.05pt!important;line-height:1.06!important;margin:0 0 .018in!important}
+  .plan-report section .brief-card p{margin:0!important}.plan-report section .brief-card ul{margin:.018in 0 0!important;padding-left:.13in!important}.plan-report section .brief-card li{margin:0!important}
+  .plan-report .scorecard-grid{gap:.04in!important}.plan-report .score-item{padding:.055in .065in!important;font-size:7.35pt!important;line-height:1.12!important}.plan-report .score-item h3{font-size:8.7pt!important;margin:.01in 0 .018in!important}.plan-report .score-item p{margin:0!important}.plan-report #measures{font-size:15.5pt!important}
+}
