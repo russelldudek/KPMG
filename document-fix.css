@@ -36,3 +36,10 @@
 .letter-target span{font-size:6.55pt;letter-spacing:.055em;line-height:1.15;white-space:normal;overflow-wrap:anywhere}
 .letter-target strong{font-size:9.25pt;line-height:1.12;max-width:100%}
 @media print{.letter-head{grid-template-columns:minmax(0,1fr) 1.82in}.letter-target img{width:.92in}}
+/* The cover letter now uses the exact resume header component and page geometry. */
+.letter-page{padding:.48in .52in}
+.letter-page .resume-header-primary{margin-bottom:.11in}
+@media print{
+  .letter-page{padding:.5in .65in}
+  .letter-page .resume-header-primary{margin-bottom:.11in}
+}
