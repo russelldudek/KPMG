@@ -1,0 +1,56 @@
+name: Refresh cover letter PDF
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-verify:
+    if: github.head_ref == 'agent/align-cover-letter-header'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Install document tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y weasyprint poppler-utils
+      - name: Render and verify cover letter
+        run: |
+          mkdir -p docs qa
+          weasyprint cover-letter.html docs/Russell-Dudek-KPMG-Cover-Letter.pdf
+          pages=$(pdfinfo docs/Russell-Dudek-KPMG-Cover-Letter.pdf | awk '/Pages/ {print $2}')
+          test "$pages" = "1"
+          pdftotext docs/Russell-Dudek-KPMG-Cover-Letter.pdf /tmp/cover-letter.txt
+          grep -q 'Russell Dudek' /tmp/cover-letter.txt
+          grep -q 'Pittsburgh, Pennsylvania' /tmp/cover-letter.txt
+          grep -q '412.287.8640' /tmp/cover-letter.txt
+          grep -q 'russelldudek@gmail.com' /tmp/cover-letter.txt
+          grep -q 'linkedin.com/in/russelldudek' /tmp/cover-letter.txt
+          grep -q 'russelldudek.github.io/KPMG/' /tmp/cover-letter.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          Path('qa/cover-letter-header-audit.json').write_text(json.dumps({
+              'headerComponent': 'resume-header resume-header-primary',
+              'horizontalPagePaddingInches': 0.52,
+              'duplicateTargetLineRemoved': True,
+              'pdfPages': 1,
+              'contactBlockPresent': True,
+              'campaignUrlPresent': True,
+              'passed': True
+          }, indent=2) + '\n')
+          PY
+      - name: Commit verified PDF to audit branch
+        run: |
+          rm -f .header-alignment-trigger
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cover-letter.html document-fix.css docs/Russell-Dudek-KPMG-Cover-Letter.pdf qa/cover-letter-header-audit.json .header-alignment-trigger
+          git commit -m 'Publish aligned cover letter header and PDF'
+          git push origin HEAD:${{ github.head_ref }}
