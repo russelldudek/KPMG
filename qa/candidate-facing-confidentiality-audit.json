@@ -1,0 +1,55 @@
+{
+  "auditDate": "2026-07-13",
+  "filenameMatches": [
+    "./.github/workflows/materialize-roleforge.yml"
+  ],
+  "sourceMatches": [
+    "./.github/workflows/apply-brand-fidelity.yml:1:name: Apply RoleForge Brand Fidelity",
+    "./.github/workflows/apply-brand-fidelity.yml:205:          rm -rf .roleforge-brand",
+    "./.github/workflows/apply-brand-fidelity.yml:20:          ref: ${{ github.event_name == 'pull_request' && github.head_ref || 'roleforge-kpmg-brand-diagnostic' }}",
+    "./.github/workflows/apply-brand-fidelity.yml:211:          git push origin HEAD:${{ github.event_name == 'pull_request' && github.head_ref || 'roleforge-kpmg-brand-diagnostic' }}",
+    "./.github/workflows/apply-kpmg-brand-fidelity.yml:22:      - name: Materialize staged RoleForge campaign",
+    "./.github/workflows/apply-kpmg-brand-fidelity.yml:26:          test -d .roleforge-brand",
+    "./.github/workflows/apply-kpmg-brand-fidelity.yml:27:          mapfile -d '' parts < <(find .roleforge-brand -maxdepth 1 -type f -name 'chunk-*.txt' -print0 | sort -z -V)",
+    "./.github/workflows/apply-kpmg-brand-fidelity.yml:57:          rm -rf .roleforge-brand",
+    "./.github/workflows/debug-kpmg-brand.yml:32:              --user-agent 'RoleForge/1.0 (independent candidate campaign; github.com/russelldudek)' \\",
+    "./.github/workflows/final-kpmg-brand-audit-v2.yml:12:    if: startsWith(github.head_ref, 'roleforge-kpmg-brand-final') && github.actor != 'github-actions[bot]'",
+    "./.github/workflows/final-kpmg-brand-audit.yml:12:    if: startsWith(github.head_ref, 'roleforge-kpmg-brand-final') && github.actor != 'github-actions[bot]'",
+    "./.github/workflows/finalize-documents.yml:1:name: Finalize RoleForge PDFs",
+    "./.github/workflows/materialize-roleforge.yml:19:          cat .roleforge-overlay/chunk-* | base64 -d > /tmp/roleforge-overlay.zip",
+    "./.github/workflows/materialize-roleforge.yml:1:name: Materialize RoleForge overlay",
+    "./.github/workflows/materialize-roleforge.yml:20:          unzip -o /tmp/roleforge-overlay.zip -d .",
+    "./.github/workflows/materialize-roleforge.yml:21:          rm -rf .roleforge-overlay",
+    "./.github/workflows/materialize-roleforge.yml:27:          git commit -m \"Materialize audited KPMG RoleForge campaign\"",
+    "./.github/workflows/materialize-roleforge.yml:7:      - \".roleforge-overlay/chunk-*\"",
+    "./qa/confidentiality-filename-matches.txt:1:./.github/workflows/materialize-roleforge.yml"
+  ],
+  "pdfMatches": [],
+  "pdfs": {
+    "resume": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 29972
+    },
+    "coverLetter": {
+      "pages": 1,
+      "expectedPages": 1,
+      "passed": true,
+      "bytes": 19486
+    },
+    "interviewBrief": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 30174
+    },
+    "entryPlan": {
+      "pages": 2,
+      "expectedPages": 2,
+      "passed": true,
+      "bytes": 30015
+    }
+  },
+  "passed": false
+}
